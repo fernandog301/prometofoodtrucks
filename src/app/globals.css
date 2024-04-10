@@ -17,13 +17,8 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-image: url("../assets/imgs/bg.jpg");
+  height: 100vh;
 }
 
 @layer utilities {
@@ -31,3 +26,31 @@ body {
     text-wrap: balance;
   }
 }
+
+.bg-btn, .bg-btn:hover {
+  background: #1283C8 !important;
+  color: white !important;
+}
+
+.map-height {
+  height: 700px;
+}
+
+.home-header {
+  background: #EFEFEFCC;
+}
+.home-button, .home-button:hover {
+  background: #909090 !important;
+  color: white !important;
+}
+img, video {
+  max-width: none;
+}
+.logout-button, .logout-button:hover, .logout-button:active {
+  background-color: white !important;
+}
+
+.mlh {
+  height: 512px;
+}
+
