@@ -3,6 +3,8 @@
 import { Button, Card } from 'flowbite-react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import { createAccount, getLoggedInUserData, login } from '../utils/DataServices'
+import { IToken } from '../interfaces/interfaces'
 
 const LogInComponent = () => {
 
@@ -10,6 +12,25 @@ const LogInComponent = () => {
     const [password, setPassword] = useState<string>('');
     
     const router = useRouter();
+
+    const handleSubmit = async () => {
+      let userData = {
+        username : username,
+        password : password
+      }
+
+      let token: IToken = await login(userData);
+
+      console.log(token);
+
+      if(token.token != null) {
+        localStorage.setItem("Token", token.token)
+        getLoggedInUserData(username);
+        router.push('/FoodTruck');
+      } else {
+        alert("Login Failed");
+      }
+    }
 
     const handleForgotPassowrd = () => {
         router.push('/ResetPassword')
@@ -28,13 +49,13 @@ const LogInComponent = () => {
           </div>
           <div className='flex flex-col'>
             <p>Username</p>
-            <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a username" type="text" />
+            <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a username" type="text" onChange={(e) => setUsername(e.target.value)} />
             <p>Password</p>
-            <input className=" rounded-lg text-xs w-full mt-2" placeholder="Enter a password" type="password" />
+            <input className=" rounded-lg text-xs w-full mt-2" placeholder="Enter a password" type="password" onChange={(e) => setPassword(e.target.value)} />
             <a className='hover:cursor-pointer w-full text-right underline text-xs text-blue-600 mt-1' onClick={handleForgotPassowrd}>Forgot Password?</a>
           </div>
           <div>
-            <Button className="w-full bg-btn font-light my-4">Sign Up</Button>
+            <Button className="w-full bg-btn font-light my-4"onClick={handleSubmit}>Sign In</Button>
           </div>
         </div>
     </div>

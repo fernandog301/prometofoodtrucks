@@ -16,9 +16,14 @@ export interface IToken {
 export interface IUserInfo {
     username: string
     password: string
+    foodTruckName: string
+}
+export interface IUserLogin {
+    username: string
+    password: string
 }
 
 export interface IUserData {
     userId: number
-    publisherName: string
+    foodTruckName: string
 }

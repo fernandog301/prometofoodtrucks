@@ -3,17 +3,23 @@
 import React, { useState } from 'react';
 import { Button, Card } from "flowbite-react";
 import { useRouter } from 'next/navigation';
+import { createAccount } from '../utils/DataServices';
 
 const SignUpComponent = () => {
 
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [foodTruckName, setFoodTruckName] = useState<string>('');
     
   let router = useRouter();
 
   const handleSubmit = () => {
-    
-
+    let userData = {
+      username : username,
+      password : password,
+      foodTruckName : foodTruckName
+    }
+    createAccount(userData);
     router.push('/Login');
   }
 
@@ -30,11 +36,11 @@ const SignUpComponent = () => {
           </div>
           <div className="flex flex-col">
             <p>Username</p>
-            <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a username" type="text" />
+            <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a username" type="text" onChange={(e) => setUsername(e.target.value)} />
             <p>Password</p>
-            <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a password" type="password" />
+            <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a password" type="password" onChange={(e) => setPassword(e.target.value)} />
             <p>Name of Food Truck</p>
-            <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a Food Truck Name" type="text" />
+            <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a Food Truck Name" type="text" onChange={(e) => setFoodTruckName(e.target.value)} />
           </div>
           <div>
             <Button className="w-full bg-btn font-light my-4" onClick={handleSubmit}>Sign Up</Button>
