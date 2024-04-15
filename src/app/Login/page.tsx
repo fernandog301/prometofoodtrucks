@@ -22,7 +22,7 @@ const LogInComponent = () => {
       let token: IToken = await login(userData);
 
       console.log(token);
-
+      
       if(token.token != null) {
         localStorage.setItem("Token", token.token)
         getLoggedInUserData(username);
