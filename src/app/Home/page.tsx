@@ -98,7 +98,7 @@ const HomeComponent = () => {
                 </div>
             </div>
         </div>
-        <div className='map-height '>
+        <div className='map-height container'>
             <MapComponent/>
             {/* <img className='w-full' src="https://s3-alpha-sig.figma.com/img/9d3b/753b/d9b6cf7c948fe1cf974a9defbc8833dc?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kzXH3z~GX5AsfGnN8Dm7Htg7PQOngtiGm~8tAJ7GlhqKoqlxwxLoSEoHqL6q7sDh~2vEAB1ONense99XaDHST3yaxdQOZysCSCJHrQVgn~WHs~rUJ9JCjoJz9EqAZDHuKySY1omEmK3nFQo16hx2zi3IPM9CywnYnv2eXmkz385b93AOz-90KDW~zy6eKXDivlRDsC3dxM5Y8NSoCmhDmMY1GXhIc~7mFFMSiRPfe8Sjs8KJFIsgUfM24p1PJprCuAs~yBdwIUTsRhscPhGvPw1M0SF4Vy7h-FNDJqlmNBn7jTEdi5XMY~3Swcld5OTfYMhX7c5B5-T11vs7p2-MCw__" alt="" /> */}
         </div>
