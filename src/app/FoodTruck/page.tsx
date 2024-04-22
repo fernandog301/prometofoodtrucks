@@ -1,8 +1,19 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
 import { Button } from 'flowbite-react'
+import { useRouter } from 'next/navigation'
+import router from 'next/router';
 
 const FoodTruckComponent = () => {
+
+    const router = useRouter();
+
+    const handleRouteLogout = () => {
+        router.push('/Home')
+    }
+
   return (
     <div className='flex justify-center items-center'>
         <div className='container bg-slate-200 h-full p-12'>
@@ -11,7 +22,7 @@ const FoodTruckComponent = () => {
                     <Image className=' h-full' src='/foodtruck.jpg' width={1920} height={1080} alt='Food Truck Image' />
                 </div>
                 <h1>Food Truck Name</h1>
-                <Button className='logout-button text-black rounded-xl'>Log Out</Button>
+                <Button className='logout-button text-black rounded-xl' onClick={handleRouteLogout}>Log Out</Button>
             </div>
             <div>
                 <div className='border border-black bg-white rounded-xl mt-8 p-2 h-44 flex flex-col gap-2'>
