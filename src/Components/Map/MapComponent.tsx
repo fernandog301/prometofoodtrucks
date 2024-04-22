@@ -9,7 +9,8 @@ const MapComponent = () => {
       container: 'map',
       style: 'mapbox://styles/examples/clg45vm7400c501pfubolb0xz',
       center: [-87.661557, 41.893748],
-      zoom: 10.7
+      zoom: 10.7,
+      attributionControl: false
     });
 
     map.on('click', (event) => {
