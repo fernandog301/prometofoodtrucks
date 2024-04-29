@@ -1,4 +1,4 @@
-import { IToken, IUserData, IUserInfo, IUserLogin } from "../interfaces/interfaces";
+import { IToken, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
 
 const url = 'https://prometowebapi.azurewebsites.net/';
 

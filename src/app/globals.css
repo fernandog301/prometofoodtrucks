@@ -57,3 +57,18 @@ img, video {
 .map-bg {
   background-color: #ece9e6;
 }
+
+.h-customButton {
+  height: 34px;
+  border: 1px #6B7280 solid !important;
+}
+.noBorder, .noBorder:focus {
+  outline: transparent !important;
+  border: transparent !important;
+}
+.noArrow::-webkit-inner-spin-button, .noArrow::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.noArrow {
+  -moz-appearance: textfield;
+}

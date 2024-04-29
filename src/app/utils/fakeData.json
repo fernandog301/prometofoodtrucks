@@ -1,0 +1,43 @@
+{
+    "userid": 1,
+    "username": "username",
+    "password": "password",
+    "email": "email",
+    "truckName": "truckName",
+    "truckImage": "imageLink",
+    "truckLocation": "1234 bingbong street",
+    "truckSchedule": "their schedule",
+    "description": "description",
+    "menuItems": [
+        {
+            "itemId": 1,
+            "itemName": "itemName",
+            "itemPrice": "300"
+        },
+        {
+            "itemId": 2,
+            "itemName": "itemName",
+            "itemPrice": "300"
+        },
+        {
+            "itemId": 3,
+            "itemName": "itemName",
+            "itemPrice": "300"
+        },
+        {
+            "itemId": 4,
+            "itemName": "itemName",
+            "itemPrice": "300"
+        },
+        {
+            "itemId": 5,
+            "itemName": "itemName",
+            "itemPrice": "300"
+        },
+        {
+            "itemId": 6,
+            "itemName": "itemName",
+            "itemPrice": "300"
+        }
+    ]
+}

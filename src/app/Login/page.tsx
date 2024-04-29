@@ -4,7 +4,7 @@ import { Button, Card } from 'flowbite-react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { createAccount, getLoggedInUserData, login } from '../utils/DataServices'
-import { IToken } from '../interfaces/interfaces'
+import { IToken } from '../../interfaces/interfaces'
 
 const LogInComponent = () => {
 
