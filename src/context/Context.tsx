@@ -14,7 +14,6 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
     const [foodTruckName, setFoodTruckName] = useState("");
     const [items, setItems] = useState<string[]>([]);
     const [itemPrices, setItemPrices] = useState<number[]>([]);
-    const aDiv = <div>hi</div>;
 
     return (
         <signUpContext.Provider
