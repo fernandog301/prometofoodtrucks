@@ -8,12 +8,19 @@ export const signUpContext = createContext<IUserSignUpContext>(
 );
 
 export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [foodTruckName, setFoodTruckName] = useState("");
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [foodTruckName, setFoodTruckName] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
     const [items, setItems] = useState<string[]>([]);
     const [itemPrices, setItemPrices] = useState<number[]>([]);
+    const [longitude, setLongitude] = useState<number>(0);
+    const [latitude, setLatitude] = useState<number>(0);
+    const [address, setAddress] = useState<string>("");
+    const [city, setCity] = useState<string>("");
+    const [state, setState] = useState<string>("");
+    const [zipcode, setZipcode] = useState<number>(0);
 
     return (
         <signUpContext.Provider
@@ -26,11 +33,24 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
                 setEmail,
                 foodTruckName,
                 setFoodTruckName,
+                description,
+                setDescription,
                 items,
                 setItems,
                 itemPrices,
                 setItemPrices,
-                aDiv
+                longitude,
+                setLongitude,
+                latitude,
+                setLatitude,
+                address,
+                setAddress,
+                city,
+                setCity,
+                state,
+                setState,
+                zipcode,
+                setZipcode
             }}
         >
             {children}

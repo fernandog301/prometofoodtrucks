@@ -1,43 +1,55 @@
 {
     "userid": 1,
-    "username": "username",
-    "password": "password",
-    "email": "email",
-    "truckName": "truckName",
-    "truckImage": "imageLink",
-    "truckLocation": "1234 bingbong street",
-    "truckSchedule": "their schedule",
-    "description": "description",
-    "menuItems": [
-        {
-            "itemId": 1,
-            "itemName": "itemName",
-            "itemPrice": "300"
+    "userData": {
+        "username": "username",
+        "password": "password",
+        "email": "email"
+    },
+    "truckInfo": {
+        "name": "truckName",
+        "image": "imageLink",
+        "schedule": "their schedule",
+        "description": "description",
+        "category": "category",
+        "location": {
+            "longitude": 0.0,
+            "latitude": 0.0,
+            "address": "address",
+            "city": "city",
+            "state": "state",
+            "zipcode": 0
         },
-        {
-            "itemId": 2,
-            "itemName": "itemName",
-            "itemPrice": "300"
-        },
-        {
-            "itemId": 3,
-            "itemName": "itemName",
-            "itemPrice": "300"
-        },
-        {
-            "itemId": 4,
-            "itemName": "itemName",
-            "itemPrice": "300"
-        },
-        {
-            "itemId": 5,
-            "itemName": "itemName",
-            "itemPrice": "300"
-        },
-        {
-            "itemId": 6,
-            "itemName": "itemName",
-            "itemPrice": "300"
-        }
-    ]
+        "menuItems": [
+            {
+                "itemId": 1,
+                "itemName": "itemName",
+                "itemPrice": 0.0
+            },
+            {
+                "itemId": 2,
+                "itemName": "itemName",
+                "itemPrice": 0.0
+            },
+            {
+                "itemId": 3,
+                "itemName": "itemName",
+                "itemPrice": 0.0
+            },
+            {
+                "itemId": 4,
+                "itemName": "itemName",
+                "itemPrice": 0.0
+            },
+            {
+                "itemId": 5,
+                "itemName": "itemName",
+                "itemPrice": 0.0
+            },
+            {
+                "itemId": 6,
+                "itemName": "itemName",
+                "itemPrice": 0.0
+            }
+        ]
+    }
 }

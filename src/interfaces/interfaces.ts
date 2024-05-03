@@ -47,9 +47,22 @@ export interface IUserSignUpContext {
     setEmail: (email: string) => void
     foodTruckName: string
     setFoodTruckName: (foodTruckName: string) => void
+    description: string
+    setDescription: (description: string) => void
     items: string[]
     setItems: (items: string[]) => void
     itemPrices: number[]
     setItemPrices: (itemPrices: number[]) => void
-    aDiv: any
+    longitude: number
+    setLongitude: (longitude: number) => void
+    latitude: number
+    setLatitude: (latitude: number) => void
+    address: string
+    setAddress: (address: string) => void
+    city: string
+    setCity: (city: string) => void
+    state: string
+    setState: (state: string) => void
+    zipcode: number
+    setZipcode: (zipcode: number) => void
 }

@@ -76,7 +76,7 @@ export default function FormComponent() {
     }
 
     return (
-        <div className='bg-gray-300'>
+        <div className=''>
             <form ref={formRef} className="flex flex-col px-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                     <div className='my-3 col-span-2'>
