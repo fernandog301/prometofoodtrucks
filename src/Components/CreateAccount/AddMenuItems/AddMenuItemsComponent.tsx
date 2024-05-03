@@ -3,7 +3,7 @@ import React from 'react'
 function AddMenuItemsComponent() {
   return (
     <div>
-      
+      hello
     </div>
   )
 }
