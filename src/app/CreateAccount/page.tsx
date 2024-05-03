@@ -22,7 +22,7 @@ const CreateAccount = () => {
                     <h1 className=' text-rose-600 text-center text-4xl'>Trucks</h1>
                 </div>
             
-        <ChangeComponent />
+        {ChangeComponent()}
         <div>
         <button onClick={() => setPageArr(pageArr + 1)}> WE GO NEXT </button>
         </div>
