@@ -1,4 +1,17 @@
-// 'use client'
+import React from 'react'
+
+const FormComponent = () => {
+  return (
+    <div>
+      FormComponent
+    </div>
+  )
+}
+
+export default FormComponent
+
+
+// 'use client'FormComponent
 // import React, { useState, useCallback, useEffect, useRef } from 'react';
 // import { AddressAutofill, AddressMinimap, useConfirmAddress, config } from '@mapbox/search-js-react';
 // import { Button } from '@mui/material';
