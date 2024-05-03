@@ -92,7 +92,7 @@ export default function AddLocationComponent() {
             >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                     <div className="my-3 col-span-2">
-                        <h1 className="text-3xl text-center mb-3">Add Bathroom Data</h1>
+                        <h1 className="text-3xl text-center mb-3">Add Food Truck Data</h1>
                         <hr className="" />
                     </div>
 
@@ -152,7 +152,7 @@ export default function AddLocationComponent() {
                             />
 
                             <label className="text-sm font-bold text-gray-700 mb-3">
-                                Gender
+                            schedule
                             </label>
                             <select className="w-full h-10 rounded mb-3">
                                 <option value="mens & womens">Men's and Women's</option>
@@ -161,7 +161,7 @@ export default function AddLocationComponent() {
                             </select>
 
                             <label className="text-sm font-bold text-gray-700 mb-3">
-                                Type
+                            description
                             </label>
                             <select className="w-full h-10 rounded mb-3">
                                 <option value="individual">Individual</option>
@@ -169,20 +169,14 @@ export default function AddLocationComponent() {
                             </select>
 
                             <label className="text-sm font-bold text-gray-700 mb-3">
-                                Number of stalls
+                            category
                             </label>
                             <input
                                 className="w-full h-10 px-3 py-2 rounded mb-3"
                                 placeholder="Enter number of stalls"
                             />
 
-                            <label className="text-sm font-bold text-gray-700 mb-3">
-                                Wheelchair accessible
-                            </label>
-                            <select className="w-full h-10 rounded mb-3">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
+                        
 
                             <label className="text-sm font-bold text-gray-700 mb-3">
                                 Hours of operation
@@ -192,51 +186,17 @@ export default function AddLocationComponent() {
                                 placeholder="Enter hours of operation"
                             />
 
-                            <label className="text-sm font-bold text-gray-700 mb-3">
-                                Open to public
-                            </label>
-                            <select className="w-full h-10 rounded mb-3">
-                                <option value="yes">Yes</option>
-                                <option value="no">Cutomers only</option>
-                            </select>
+                            
 
+                            
                             <label className="text-sm font-bold text-gray-700 mb-3">
-                                Key required
+                            menuItems
                             </label>
                             <select className="w-full h-10 rounded mb-3">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                                <option value="code">Code required</option>
-                            </select>
-
-                            <label className="text-sm font-bold text-gray-700 mb-3">
-                                Baby changing station
-                            </label>
-                            <select className="w-full h-10 rounded mb-3">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
-
-                            <label className="text-sm font-bold text-gray-700 mb-3">
-                                Cleanliness
-                            </label>
-                            <select className="w-full h-10 rounded mb-3">
-                                <option value="very clean">Very clean</option>
-                                <option value="clean">Clean</option>
-                                <option value="average">Average</option>
-                                <option value="dirty">Dirty</option>
-                                <option value="very dirty">Very dirty</option>
-                            </select>
-
-                            <label className="text-sm font-bold text-gray-700 mb-3">
-                                Safety
-                            </label>
-                            <select className="w-full h-10 rounded mb-3">
-                                <option value="very clean">Very safe</option>
-                                <option value="clean">Safe</option>
-                                <option value="average">Average</option>
-                                <option value="dirty">Unsafe</option>
-                                <option value="very dirty">Very unsafe</option>
+                                <option value="very clean">item Name</option>
+                                
+                                <option value="average">item Price</option>
+                                
                             </select>
                         </div>
                     </div>
