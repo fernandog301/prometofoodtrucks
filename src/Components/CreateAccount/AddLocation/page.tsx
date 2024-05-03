@@ -28,7 +28,7 @@ export default function AddLocationComponent() {
             "pk.eyJ1IjoiZmVybmFuZG9nMzAxIiwiYSI6ImNsdGdncnd2ZjExamgyanNiZXQ0NTRmcmsifQ.Hsv6Ht580GomA2oEK5ZMeQ";
         setToken(accessToken);
         config.accessToken = accessToken;
-    }, []);
+    }, [submitForm]);
 
     // const formRef = useRef<HTMLFormElement>(null);
 

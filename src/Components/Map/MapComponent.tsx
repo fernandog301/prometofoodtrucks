@@ -27,7 +27,7 @@ const MapComponent = () => {
         const map = new mapboxgl.Map({
           container: 'map',
           // style: 'mapbox://styles/examples/clg45vm7400c501pfubolb0xz',
-          // style: 'mapbox://styles/mapbox/streets-v12',
+          style: 'mapbox://styles/mapbox/streets-v12',
           center: [longitude, latitude],
           zoom: 10.2,
           attributionControl: false,
