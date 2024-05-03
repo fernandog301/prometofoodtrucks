@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 
 const CreateAccount = () => {
 
-  const componentArray = [<AddMenuItemsComponent/>, <AddLocationComponent/>, ]
+  const componentArray = [<AddMenuItemsComponent  key="menuItems"/>, <AddLocationComponent key="location" />, ]
   const [pageArr, setPageArr] = useState(0);
   const ChangeComponent = () => {
     return componentArray[pageArr]
