@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 
 const CreateAccount = () => {
 
-  const componentArray = [<AddMenuItemsComponent/>, <AddLocationComponent key="pk.eyJ1IjoiZmVybmFuZG9nMzAxIiwiYSI6ImNsdGdncnd2ZjExamgyanNiZXQ0NTRmcmsifQ.Hsv6Ht580GomA2oEK5ZMeQ" />, ]
+  const componentArray = [<AddMenuItemsComponent key="menu"/>, <AddLocationComponent key="location" />, ]
   const [pageArr, setPageArr] = useState(0);
   const ChangeComponent = () => {
     return componentArray[pageArr]
@@ -22,7 +22,7 @@ const CreateAccount = () => {
                     <h1 className=' text-rose-600 text-center text-4xl'>Trucks</h1>
                 </div>
             
-        <ChangeComponent />
+        {ChangeComponent()}
         <div>
         <button onClick={() => setPageArr(pageArr + 1)}> WE GO NEXT </button>
         </div>
