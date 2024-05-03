@@ -1,3 +1,11 @@
+import React from "react";
+
+const page = () => {
+  return <div>AddLocation</div>;
+};
+
+export default page;
+
 // "use client";
 // import React, { useState, useCallback, useEffect, useRef } from "react";
 // import {
@@ -82,7 +90,7 @@
 //         setShowValidationText(false);
 //         setFeature(null);
 //     }
-
+// //
 //     return (
 //         <div className="add-location-container">
 //             <form
@@ -176,8 +184,6 @@
 //                                 placeholder="Enter number of stalls"
 //                             />
 
-                        
-
 //                             <label className="text-sm font-bold text-gray-700 mb-3">
 //                                 Hours of operation
 //                             </label>
@@ -186,17 +192,14 @@
 //                                 placeholder="Enter hours of operation"
 //                             />
 
-                            
-
-                            
 //                             <label className="text-sm font-bold text-gray-700 mb-3">
 //                             menuItems
 //                             </label>
 //                             <select className="w-full h-10 rounded mb-3">
 //                                 <option value="very clean">item Name</option>
-                                
+
 //                                 <option value="average">item Price</option>
-                                
+
 //                             </select>
 //                         </div>
 //                     </div>
