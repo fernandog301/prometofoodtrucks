@@ -155,7 +155,7 @@ export default function AddLocationComponent() {
                             schedule
                             </label>
                             <select className="w-full h-10 rounded mb-3">
-                                <option value="mens & womens">Men's and Women's</option>
+                                <option value="mens & womens">Mens and Womens</option>
                                 <option value="gender neutral">Gender neutral</option>
                                 <option value="family restroom">Family restroom</option>
                             </select>
