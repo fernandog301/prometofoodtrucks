@@ -40,7 +40,7 @@ export default function FormComponent() {
             setShowMinimap(true);
             setShowFormExpanded(true);
         },
-        [setFeature, setShowMinimap]
+        [setFeature, setShowMinimap, submitForm]
     );
 
     function handleSaveMarkerLocation(coordinate: any) {
