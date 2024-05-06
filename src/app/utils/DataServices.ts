@@ -1,4 +1,4 @@
-import { IToken, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
+import { IFoodTruck, IToken, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
 
 const url = 'https://prometowebapi.azurewebsites.net/';
 
@@ -62,3 +62,32 @@ export const getLoggedInUserData = async (username: string) => {
 export const loggedinData = () => {
     return userData;
 }
+
+export const getMapDots = async () => {
+    const res = await fetch(url + '/FoodTruck/GetAllFoodTrucksAsGeoJSON');
+    const data = await res.json();
+    return data;
+}
+
+export const AddFoodTruck = async (AddFoodTruck: IFoodTruck) => {
+    const response = await fetch(url + '/FoodTruck/AddFoodTruck', {
+    method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(AddFoodTruck)
+        });
+        if(!response.ok) {
+            const message = "An error has occured " + response.status;
+            throw new Error(message);
+        }
+        const data = await response.json();
+        console.log(data);
+}
+
+export const getAllFoodTrucks = async (UpdateFoodTruck : IFoodTruck) => {
+    const res = await fetch(url + '/FoodTruck/GetAllFoodTrucks');
+    const data = await res.json();
+    return data;
+}
+

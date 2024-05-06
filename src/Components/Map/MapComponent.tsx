@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import Image from 'next/image'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import { getMapDots } from '@/app/utils/DataServices';
+import map from 'react-map-gl/dist/esm/components/map';
 
 const MapComponent = () => {
   const [longitude, setLongitude] = useState(null);
@@ -24,7 +26,7 @@ const MapComponent = () => {
       mapboxgl.accessToken = await 'pk.eyJ1IjoiZmVybmFuZG9nMzAxIiwiYSI6ImNsdGdncnd2ZjExamgyanNiZXQ0NTRmcmsifQ.Hsv6Ht580GomA2oEK5ZMeQ';
       if (longitude !== null && latitude !== null) {
         setLoadingMap(false);
-        const map = new mapboxgl.Map({
+        const newMap = new mapboxgl.Map({
           container: 'map',
           // style: 'mapbox://styles/examples/clg45vm7400c501pfubolb0xz',
           style: 'mapbox://styles/mapbox/streets-v12',
@@ -33,23 +35,49 @@ const MapComponent = () => {
           attributionControl: false,
         });
 
-        map.on('style.load', () => {
-          map.setConfigProperty('basemap', 'lightPreset', 'day'); // the last value can be changed to dawn, day, dusk, or night
+        newMap.on('style.load', () => {
+          newMap.setConfigProperty('basemap', 'lightPreset', 'day'); // the last value can be changed to dawn, day, dusk, or night
         });
-    
+
+        const getData = async () => {
+          const mapDots: any = await getMapDots();
+          console.log(mapDots);
+          return mapDots;
+      }
         
         // Searchbox
-        map.addControl(
-          new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl,
-            placeholder: 'Search for a location',
-          }), 
-          'top-left'  
-        );
-    
+        // newMap.addControl(
+        //   new MapboxGeocoder({
+        //     accessToken: mapboxgl.accessToken,
+        //     mapboxgl: mapboxgl,
+        //     placeholder: 'Search for a location',
+        //   }), 
+        //   'top-left'  
+        // );
+        
+        getData().then(mapDots => {
+          newMap.on('load', () => {
+              newMap.addSource('earthquakes', {
+                  type: 'geojson',
+                  // Use a URL for the value for the data property.
+                  data: mapDots,
+              });
+  
+              newMap.addLayer({
+                  'id': 'earthquakes-layer',
+                  'type': 'circle',
+                  'source': 'earthquakes',
+                  'paint': {
+                      'circle-radius': 4,
+                      'circle-stroke-width': 2,
+                      'circle-color': 'red',
+                      'circle-stroke-color': 'white'
+                  }
+              });
+          });
+        })
         //Geolocator, grabs the devices location
-        map.addControl(
+        newMap.addControl(
           new mapboxgl.GeolocateControl({
             positionOptions: {
               enableHighAccuracy: true
@@ -60,56 +88,30 @@ const MapComponent = () => {
           'bottom-right' 
         );
     
-
-        map.addControl(new mapboxgl.NavigationControl());
-
-          // On click Event
-        // map.on('click', (event) => {
-        //   const features = map.queryRenderedFeatures(event.point, {
-        //     layers: ['chicago-parks']
-        //   });
-        //   if (!features.length) {
-        //     return;
-        //   }
-        //   const feature = features[0];
-    
-        //   const popup = new mapboxgl.Popup({ offset: [0, -15] })
-        //     .setLngLat(feature.geometry.coordinates)
-        //     .setHTML(
-        //       `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-        //     )
-        //     .addTo(map);
-        // });
-
-        // Fake Data
-        // map.on('load', () => {
-        //   map.addSource('earthquakes', {
-        //     type: 'geojson',
-        //     data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson'
-        //   })
-        //   map.addLayer({
-        //     'id': 'earthquakes-layer',
-        //     'type': 'circle',
-        //     'source': 'earthquakes',
-        //     'paint': {
-        //         'circle-radius': 4,
-        //         'circle-stroke-width': 2,
-        //         'circle-color': 'red',
-        //         'circle-stroke-color': 'white'
-        //     }
-        // });
-        // })
+        // newMap.addControl(new mapboxgl.FullscreenControl());
+        newMap.addControl(new mapboxgl.NavigationControl());
+        // newMap.addControl(new mapboxgl.ScaleControl());
 
         
-
-
+        // setMap(newMap);
 
         // Cleanup function
-        return () => map.remove();
+        return () => newMap.remove();
       }
+      
     }
+    // useEffect(() => {
+    //   // Searchbox outside of the map display?
+    //   if (map && geocoderContainerRef.current) {
+    //       const geocoder = new MapboxGeocoder({
+    //           accessToken: mapboxgl.accessToken,
+    //           mapboxgl: mapboxgl,
+    //           placeholder: 'Search for a location',
+    //       });
+    //       geocoderContainerRef.current.appendChild(geocoder.onAdd(map));
+    //   }
     createMap();
-  }, [longitude, latitude]);
+  }, [ longitude, latitude]);
 
   return (
     <div className='relative w-full h-full map-bg'>
