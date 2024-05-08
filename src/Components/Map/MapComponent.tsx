@@ -27,14 +27,13 @@ const MapComponent = () => {
     const createMap = async () => {
       await location();
       mapboxgl.accessToken = await process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? '';
-
       if (longitude !== null && latitude !== null) {
         setLoadingMap(false);
         const newMap = new mapboxgl.Map({
-          container: 'Map'!,
+          container: 'map',
           // style: 'mapbox://styles/examples/clg45vm7400c501pfubolb0xz',
           style: 'mapbox://styles/mapbox/streets-v12',
-          // center: [longitude, latitude],
+          center: [longitude, latitude],
           zoom: 10.2,
           attributionControl: false,
         });
