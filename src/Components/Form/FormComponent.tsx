@@ -8,13 +8,15 @@ import {
 } from "@mapbox/search-js-react";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import Link from "next/link";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 function FormComponent() {
   const [showMinimap, setShowMinimap] = useState<boolean>(false);
   const [feature, setFeature] = useState<null>(null);
   const [showValidationText, setShowValidationText] = useState<boolean>(false);
   const [mapToken, setMapToken] = useState<string>("");
+  const [formSuccess, setFormSuccess] = useState(false)
+  const [formSuccessMessage, setFormSuccessMessage] = useState("")
   const [formData, setFormData] = useState({
     address: "",
     city: "",
@@ -29,10 +31,10 @@ function FormComponent() {
     category:"",
     rating:"",
     
-  });
+  }); 
+  const [address, setAddress] = useState("");
 
-  const [formSuccess, setFormSuccess] = useState(false)
-  const [formSuccessMessage, setFormSuccessMessage] = useState("")
+  
 
   const handleInput = (e: any) => {
     const fieldName = e.target.name;
@@ -79,7 +81,6 @@ function FormComponent() {
         category:"",
         rating:"",
       })
-
       setFormSuccess(true)
       setFormSuccessMessage(data.submission_text)
     })
@@ -94,7 +95,7 @@ function FormComponent() {
         <form method="PUT" action="https://prometowebapi.azurewebsites.net/FoodTruck/UpdateFoodTruck" onSubmit={submitForm}>
           <div>
             <label>address</label>
-            <input type="address" name="address" onChange={handleInput} value={formData.address} />
+            <input type="address" name="address" onChange={(e) => setAddress(e.target.value)} />
           </div>
 
 
