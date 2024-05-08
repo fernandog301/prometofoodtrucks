@@ -12,12 +12,12 @@ const MapComponent = () => {
   const [loadingMap, setLoadingMap] = useState(true);
   const [map, setMap] = useState<mapboxgl.Map | null>(null)
     const geocoderContainerRef = useRef<HTMLDivElement>(null)
-    const mapContainerRef = useRef<HTMLDivElement>(null)
+    // const mapContainerRef = useRef<HTMLDivElement>(null)
 
   const location = async () => {
     const promise = await fetch(`https://api.geoapify.com/v1/ipinfo?&apiKey=5affdbac674e47b0977a8f4bba6b9ea2`);
     const data = await promise.json();
-    
+
     setLongitude(data.location.longitude);
     setLatitude(data.location.latitude);
   }
@@ -31,13 +31,12 @@ const MapComponent = () => {
       if (longitude !== null && latitude !== null) {
         setLoadingMap(false);
         const newMap = new mapboxgl.Map({
-          container: mapContainerRef.current!,
+          container: 'Map'!,
           // style: 'mapbox://styles/examples/clg45vm7400c501pfubolb0xz',
-          // style: 'mapbox://styles/mapbox/streets-v12',
-          center: [-100, 30],
+          style: 'mapbox://styles/mapbox/streets-v12',
           // center: [longitude, latitude],
           zoom: 10.2,
-          // attributionControl: false,
+          attributionControl: false,
         });
 
         newMap.on('style.load', () => {
@@ -154,7 +153,7 @@ const MapComponent = () => {
   return (
     <div className='relative w-full h-full map-bg'>
       {/* <Image src="/DualRing.svg" width={100} height={100} alt="Loading" style={{ display: loadingMap ? 'block' : 'none', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} /> */}
-      <div id="map" ref={mapContainerRef} style={{ width: '100%', height: '100%', position: 'relative' }} />
+      <div id="map"  style={{ width: '100%', height: '100%', position: 'relative' }} />
     </div>
     
   );
