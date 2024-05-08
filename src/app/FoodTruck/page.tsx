@@ -14,6 +14,10 @@ const FoodTruckComponent = () => {
         router.push('/Home')
     }
 
+    const handleEdit = () =>{
+        router.push('/Form')
+    }
+
   return (
     <div className='flex justify-center items-center'>
         <div className='container bg-slate-200 h-full p-12'>
@@ -41,7 +45,7 @@ const FoodTruckComponent = () => {
                 <div className='border border-black w-3/5 bg-white rounded-xl p-4'>
                     <div className='flex justify-between items-center'>
                         <h1 className=' text-2xl'>Menu</h1>
-                        <Image className='rounded-full' src='/pen.svg' alt='' height={36} width={36} />
+                        <Image className='rounded-full' src='/pen.svg' onClick={handleEdit} alt='' height={36} width={36} />
                     </div>
                     <div></div>
                 </div>
