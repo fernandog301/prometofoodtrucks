@@ -1,5 +1,7 @@
 "use client";
 
+import { getAllFoodTrucks, updateFoodtruck } from "@/app/utils/DataServices";
+import { IFoodTruck, IToken, IUpdateFoodTruck } from "@/interfaces/interfaces";
 import {
   AddressAutofill,
   AddressMinimap,
@@ -7,84 +9,117 @@ import {
   config,
 } from "@mapbox/search-js-react";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { get } from "http";
 import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
 
 function FormComponent() {
-  const [showMinimap, setShowMinimap] = useState<boolean>(false);
-  const [feature, setFeature] = useState<null>(null);
-  const [showValidationText, setShowValidationText] = useState<boolean>(false);
-  const [mapToken, setMapToken] = useState<string>("");
-  const [formSuccess, setFormSuccess] = useState(false)
-  const [formSuccessMessage, setFormSuccessMessage] = useState("")
-  const [formData, setFormData] = useState({
-    address: "",
-    city: "",
-    state: "",
-    zipCode: "",
-    latitude: "",
-    longitude: "",
-    name: "",
-    description: "",
-    schedule: "",
-    image: "",
-    category:"",
-    rating:"",
+
+  const [address, setAddress] = useState<string>('');
+  const [city, setCity] = useState<string>('');
+  const [state, setState] = useState<string>('');
+  const [zipCode,setZipCode] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [schedule, setSchedule] = useState<string>('');
+  const [category, setCategory] = useState<string>('');
+  const [image, setImage] = useState<string>('');
+  // const [itemId, setItemId] = useState<string>('');
+  // const [itemName, setItemName] = useState<string>('');
+  // const [itemPrice, setItemPrice] = useState<string>('');
+  
+  const handleSubmit = async () => {
+    let inputData = {
+      
+      address: address,
+      city: city,
+      state: state,
+      zipCode: zipCode,
+      name: name,
+      description: description,
+      schedule: schedule,
+      image: image,
+      category:category,
+    }
+
+    AddFoodTruck
+
+  }
+
+  // const [showMinimap, setShowMinimap] = useState<boolean>(false);
+  // const [feature, setFeature] = useState<null>(null);
+  // const [showValidationText, setShowValidationText] = useState<boolean>(false);
+  // const [mapToken, setMapToken] = useState<string>("");
+  // const [formSuccess, setFormSuccess] = useState(false)
+  // const [formSuccessMessage, setFormSuccessMessage] = useState("")
+  // const [formData, setFormData] = useState({
+  //   address: "",
+  //   city: "",
+  //   state: "",
+  //   zipCode: "",
+  //   latitude: "",
+  //   longitude: "",
+  //   name: "",
+  //   description: "",
+  //   schedule: "",
+  //   image: "",
+  //   category:"",
+  //   rating:"",
     
-  }); 
-  const [address, setAddress] = useState("");
+  // }); 
+  // const [address, setAddress] = useState("");
 
   
 
-  const handleInput = (e: any) => {
-    const fieldName = e.target.name;
-    const fieldValue = e.target.value;
+  // const handleInput = (e: any) => {
+  //   const fieldName = e.target.name;
+  //   const fieldValue = e.target.value;
 
-    setFormData((prevState) => ({
-      ...prevState,
-      [fieldName]: fieldValue
-    }));
-  }
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     [fieldName]: fieldValue
+  //   }));
+  // }
 
-  const submitForm = (e: any) => {
-    // We don't want the page to refresh
-    e.preventDefault()
+  // const submitForm = (e: any) => {
+  //   // We don't want the page to refresh
+  //   e.preventDefault()
 
-    const formURL = e.target.action
-    const data = new FormData()
+  //   const formURL = e.target.action
+  //   const data = new FormData()
 
-    // Turn our formData state into data we can use with a form submission
-    Object.entries(formData).forEach(([key, value]) => {
-      data.append(key, value);
-    })
+  //   // Turn our formData state into data we can use with a form submission
+  //   Object.entries(formData).forEach(([key, value]) => {
+  //     data.append(key, value);
+  //   })
 
-    // POST the data to the URL of the form
-    fetch(formURL, {
-      method: "PUT",
-      body: data,
-      headers: {
-        'accept': 'application/json',
-      },
-    }).then((response) => response.json())
-    .then((data) => {
-      setFormData({
-        address: "",
-        city: "",
-        state: "",
-        zipCode: "",
-        latitude: "",
-        longitude: "",
-        name: "",
-        description: "",
-        schedule: "",
-        image: "",
-        category:"",
-        rating:"",
-      })
-      setFormSuccess(true)
-      setFormSuccessMessage(data.submission_text)
-    })
-  }
+  //   // POST the data to the URL of the form
+  //   fetch(formURL, {
+  //     method: "PUT",
+  //     body: data,
+  //     headers: {
+  //       'accept': 'application/json',
+  //     },
+  //   }).then((response) => response.json())
+  //   .then((data) => {
+  //     setFormData({
+  //       address: "",
+  //       city: "",
+  //       state: "",
+  //       zipCode: "",
+  //       latitude: "",
+  //       longitude: "",
+  //       name: "",
+  //       description: "",
+  //       schedule: "",
+  //       image: "",
+  //       category:"",
+  //       rating:"",
+  //     })
+  //     setFormSuccess(true)
+  //     setFormSuccessMessage(data.submission_text)
+  //   })
+  // }
 
   return (
     <div>

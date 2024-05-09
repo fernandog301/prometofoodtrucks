@@ -12,6 +12,19 @@ export interface ITruckPage {
 export interface IToken {
     token: string
 }
+
+export interface IUpdateFoodTruck{
+    address: string,
+    city : string,
+    state: string,
+    zipCode: string,
+    name: string,
+    image: string,
+    schedule: string,
+    description: string,
+    category: string,
+}
+
 export interface IFoodTruck{
     id: number,
     address: string,
