@@ -1,10 +1,14 @@
 'use client'
 import { useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
 import Image from 'next/image'
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { getMapDots } from '@/app/utils/DataServices';
-import map from 'react-map-gl/dist/esm/components/map';
+
+
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import mapboxgl from 'mapbox-gl';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
+
 
 const MapComponent = () => {
   const [longitude, setLongitude] = useState(null);
@@ -29,7 +33,7 @@ const MapComponent = () => {
         const newMap = new mapboxgl.Map({
           container: 'map',
           // style: 'mapbox://styles/examples/clg45vm7400c501pfubolb0xz',
-          style: 'mapbox://styles/mapbox/streets-v12',
+          // style: 'mapbox://styles/mapbox/streets-v12',
           center: [longitude, latitude],
           zoom: 10.2,
           attributionControl: false,
@@ -54,28 +58,68 @@ const MapComponent = () => {
         //   }), 
         //   'top-left'  
         // );
+
+
         
         getData().then(mapDots => {
           newMap.on('load', () => {
-              newMap.addSource('earthquakes', {
+              newMap.addSource('FoodTruck', {
                   type: 'geojson',
                   // Use a URL for the value for the data property.
                   data: mapDots,
               });
   
               newMap.addLayer({
-                  'id': 'earthquakes-layer',
+                  'id': 'FoodTruck',
                   'type': 'circle',
-                  'source': 'earthquakes',
+                  'source': 'FoodTruck',
                   'paint': {
-                      'circle-radius': 4,
+                      'circle-radius': 6,
                       'circle-stroke-width': 2,
                       'circle-color': 'red',
                       'circle-stroke-color': 'white'
                   }
+                  
               });
+              const popup = new mapboxgl.Popup({
+                closeButton: true,
+                closeOnClick: true
+            });
+              
+              
+              newMap.on('click', 'FoodTruck', (e: any) => {
+                  newMap.getCanvas().style.cursor = 'pointer';
+      
+      
+                  // Copy coordinates array.
+                  const coordinates: any = e?.features?.[0]?.geometry?.coordinates?.slice();
+                  const Address = e?.features?.[0]?.properties?.address;
+                  const Category  = e?.features?.[0]?.properties?.category;
+      
+                  const City = e?.features?.[0]?.properties?.city;
+                  const Description = e?.features?.[0]?.properties?.description;
+                  const Image = e?.features?.[0]?.properties?.image;
+                  const Name = e?.features?.[0]?.properties?.name; 
+                  const Schedule = e?.features?.[0]?.properties?.schedule;
+                  const Rating = e?.features?.[0]?.properties?.rating;
+                  const State = e?.features?.[0]?.properties?.state;
+                  const ZipCode = e?.features?.[0]?.properties?.zipCode;
+      
+      
+                  while (Math.abs(e.lngLat.lng - coordinates[0]) > 180){
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                  }
+      // 
+                  const popupContent = `<div className="overflow-hidden"><strong>${Name}</strong><br><p>${Address} ${City}, ${State} ${ZipCode}</p><p>Image: ${Image}</p><p>Schedule: ${Schedule}</p><p>Description: ${Description}</p><p>Category: ${Category}</p><p>Rating: ${Rating}</p></div>`;
+      
+                  popup.setLngLat(coordinates).setHTML(popupContent).addTo(newMap);
+      
+              })
+      
           });
+          
         })
+        
         //Geolocator, grabs the devices location
         newMap.addControl(
           new mapboxgl.GeolocateControl({
@@ -87,11 +131,10 @@ const MapComponent = () => {
           }),
           'bottom-right' 
         );
-    
-        // newMap.addControl(new mapboxgl.FullscreenControl());
-        newMap.addControl(new mapboxgl.NavigationControl());
-        // newMap.addControl(new mapboxgl.ScaleControl());
 
+        
+
+      
         
         // setMap(newMap);
 
