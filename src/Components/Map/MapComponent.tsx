@@ -157,7 +157,7 @@ const MapComponent = () => {
   }, [ longitude, latitude]);
 
   return (
-    <div className='relative w-full h-full map-bg'>
+    <div className='relative w-full h-full map-bg overflow-hidde'>
       {/* <Image src="/DualRing.svg" width={100} height={100} alt="Loading" style={{ display: loadingMap ? 'block' : 'none', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} /> */}
       <div id="map" style={{ width: '100%', height: '100%', position: 'relative' }} />
     </div>
