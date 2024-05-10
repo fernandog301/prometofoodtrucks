@@ -1,10 +1,7 @@
 'use client'
-<<<<<<< HEAD
+
 import { useEffect, useState } from 'react';
-=======
-import { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
->>>>>>> 5ef718e68beda433956b0ffbe46e70b245015e5d
+
 import Image from 'next/image'
 import { getMapDots } from '@/app/utils/DataServices';
 
@@ -56,23 +53,8 @@ const MapComponent = () => {
           console.log(mapDots);
           return mapDots;
       }
-        
-<<<<<<< HEAD
-        // Searchbox
-        // newMap.addControl(
-        //   new MapboxGeocoder({
-        //     accessToken: mapboxgl.accessToken,
-        //     mapboxgl: mapboxgl,
-        //     placeholder: 'Search for a location',
-        //   }), 
-        //   'top-left'  
-        // );
 
 
-        
-=======
-       
->>>>>>> 5ef718e68beda433956b0ffbe46e70b245015e5d
         getData().then(mapDots => {
           newMap.on('load', () => {
               newMap.addSource('FoodTruck', {
