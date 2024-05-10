@@ -1,11 +1,12 @@
 import FormComponent from '@/Components/Form/FormComponent'
 import React from 'react'
+import { SignUpProvider } from '@/context/Context'
 
 function page() {
   return (
-    <div>
+    <SignUpProvider>
       <FormComponent/>
-    </div>
+    </SignUpProvider>
   )
 }
 

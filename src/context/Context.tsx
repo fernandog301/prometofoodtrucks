@@ -11,8 +11,9 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [email, setEmail] = useState<string>("");
-    const [foodTruckName, setFoodTruckName] = useState<string>("");
+    const [name, setName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
+    const [category, setCategory] = useState<string>("");
     const [items, setItems] = useState<string[]>([]);
     const [itemPrices, setItemPrices] = useState<number[]>([]);
     const [longitude, setLongitude] = useState<number>(0);
@@ -20,7 +21,9 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
     const [address, setAddress] = useState<string>("");
     const [city, setCity] = useState<string>("");
     const [state, setState] = useState<string>("");
-    const [zipcode, setZipcode] = useState<number>(0);
+    const [zipCode, setZipCode] = useState<number>(0);
+    const [schedule, setSchedule] = useState<string>("");
+    const [image, setImage] = useState<string>("");
 
     return (
         <signUpContext.Provider
@@ -31,10 +34,12 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
                 setPassword,
                 email,
                 setEmail,
-                foodTruckName,
-                setFoodTruckName,
+                name,
+                setName,
                 description,
                 setDescription,
+                category,
+                setCategory,
                 items,
                 setItems,
                 itemPrices,
@@ -49,8 +54,12 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
                 setCity,
                 state,
                 setState,
-                zipcode,
-                setZipcode
+                zipCode,
+                setZipCode,
+                schedule,
+                setSchedule,
+                image,
+                setImage
             }}
         >
             {children}
