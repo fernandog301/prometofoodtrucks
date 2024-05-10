@@ -131,9 +131,7 @@ const MapComponent = () => {
           });
           
         })
-<<<<<<< HEAD
-        
-=======
+
 
         const popup = new mapboxgl.Popup({
           closeButton: false,
@@ -172,11 +170,6 @@ const MapComponent = () => {
     popup.remove();
 });
 
-
-
-
-
->>>>>>> 5ef718e68beda433956b0ffbe46e70b245015e5d
         //Geolocator, grabs the devices location
         newMap.addControl(
           new mapboxgl.GeolocateControl({
