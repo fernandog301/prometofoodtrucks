@@ -1,4 +1,4 @@
-import { IFoodTruck, IToken, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
+import { IFoodTruck, IToken, IUpdateFoodTruck, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
 
 const url = 'https://prometowebapi.azurewebsites.net/';
 
@@ -64,13 +64,41 @@ export const loggedinData = () => {
 }
 
 export const getMapDots = async () => {
-    const res = await fetch(url + '/FoodTruck/GetAllFoodTrucksAsGeoJSON');
+    const res = await fetch(url + 'FoodTruck/GetAllFoodTrucksAsGeoJSON');
     const data = await res.json();
     return data;
 }
 
+
+
+// export const getAllFoodTrucks = async () => {
+//     const res = await fetch(url + '')
+// }
+
+export const updateFoodtruck = async (updateFoodtruck: IUpdateFoodTruck) => {
+    const res = await fetch(url + 'FoodTruck/UpdateFoodTruck', {
+        method: 'PUT',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(updateFoodtruck)
+    });
+
+    if(!res.ok){
+        const message = "An error has occured " + res.status;
+        throw new Error(message);
+    }
+    
+    const data: IToken = await res.json();
+    return data;
+}
+
+
+
+
+
 export const AddFoodTruck = async (AddFoodTruck: IFoodTruck) => {
-    const response = await fetch(url + '/FoodTruck/AddFoodTruck', {
+    const response = await fetch(url + 'FoodTruck/AddFoodTruck', {
     method: 'POST',
         headers: {
             'Content-Type':'application/json'
@@ -86,7 +114,7 @@ export const AddFoodTruck = async (AddFoodTruck: IFoodTruck) => {
 }
 
 export const getAllFoodTrucks = async (UpdateFoodTruck : IFoodTruck) => {
-    const res = await fetch(url + '/FoodTruck/GetAllFoodTrucks');
+    const res = await fetch(url + 'FoodTruck/GetAllFoodTrucks/' + UpdateFoodTruck);
     const data = await res.json();
     return data;
 }
