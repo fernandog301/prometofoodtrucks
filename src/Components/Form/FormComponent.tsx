@@ -46,6 +46,8 @@ function FormComponent() {
 
   }
 
+
+
   // const [showMinimap, setShowMinimap] = useState<boolean>(false);
   // const [feature, setFeature] = useState<null>(null);
   // const [showValidationText, setShowValidationText] = useState<boolean>(false);
@@ -127,7 +129,7 @@ function FormComponent() {
       {formSuccess ?
         <div>{formSuccessMessage}</div>
         :
-        <form method="PUT" action="https://prometowebapi.azurewebsites.net/FoodTruck/UpdateFoodTruck" onSubmit={submitForm}>
+        <form method="PUT" action="https://prometowebapi.azurewebsites.net/FoodTruck/UpdateFoodTruck" onSubmit={handleSubmit}>
           <div>
             <label>address</label>
             <input type="address" name="address" onChange={(e) => setAddress(e.target.value)} />
