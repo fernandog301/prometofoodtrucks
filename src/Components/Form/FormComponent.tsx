@@ -23,121 +23,14 @@ function FormComponent() {
   // const [itemName, setItemName] = useState<string>('');
   // const [itemPrice, setItemPrice] = useState<string>('');
 
-  
-  const handleSubmit = async () => {
-    let inputData = {
-      
-      address: address,
-      city: city,
-      state: state,
-      zipCode: zipCode,
-      name: name,
-      description: description,
-      schedule: schedule,
-      image: image,
-      category:category,
-    }
-
-    AddFoodTruck
-
-  }
-
-
-
-  // const [showMinimap, setShowMinimap] = useState<boolean>(false);
-  // const [feature, setFeature] = useState<null>(null);
-  // const [showValidationText, setShowValidationText] = useState<boolean>(false);
-  // const [mapToken, setMapToken] = useState<string>("");
-  // const [formSuccess, setFormSuccess] = useState(false)
-  // const [formSuccessMessage, setFormSuccessMessage] = useState("")
-  // const [formData, setFormData] = useState({
-  //   address: "",
-  //   city: "",
-  //   state: "",
-  //   zipCode: "",
-  //   latitude: "",
-  //   longitude: "",
-  //   name: "",
-  //   description: "",
-  //   schedule: "",
-  //   image: "",
-  //   category:"",
-  //   rating:"",
-    
-  // }); 
-  // const [address, setAddress] = useState("");
-
-  
-
-  // const handleInput = (e: any) => {
-  //   const fieldName = e.target.name;
-  //   const fieldValue = e.target.value;
-
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [fieldName]: fieldValue
-  //   }));
-  // }
-
-  // const submitForm = (e: any) => {
-  //   // We don't want the page to refresh
-  //   e.preventDefault()
-
-  //   const formURL = e.target.action
-  //   const data = new FormData()
-
-  //   // Turn our formData state into data we can use with a form submission
-  //   Object.entries(formData).forEach(([key, value]) => {
-  //     data.append(key, value);
-  //   })
-
-  //   // POST the data to the URL of the form
-  //   fetch(formURL, {
-  //     method: "PUT",
-  //     body: data,
-  //     headers: {
-  //       'accept': 'application/json',
-  //     },
-  //   }).then((response) => response.json())
-  //   .then((data) => {
-  //     setFormData({
-  //       address: "",
-  //       city: "",
-  //       state: "",
-  //       zipCode: "",
-  //       latitude: "",
-  //       longitude: "",
-  //       name: "",
-  //       description: "",
-  //       schedule: "",
-  //       image: "",
-  //       category:"",
-  //       rating:"",
-  //     })
-  //     setFormSuccess(true)
-  //     setFormSuccessMessage(data.submission_text)
-  //   })
-  // }
-
-
   return (
     <div>
       <h1>Contact form</h1>
-      {formSuccess ?
-        <div>{formSuccessMessage}</div>
-        :
-        <form method="PUT" action="https://prometowebapi.azurewebsites.net/FoodTruck/UpdateFoodTruck" onSubmit={handleSubmit}>
-          <div>
-            <label>address</label>
-            <input type="address" name="address" onChange={(e) => setAddress(e.target.value)} />
-          </div>
-
       <div></div>
         <div>
           <label>address</label>
           <input onChange={(e) => setAddress(e.target.value)} />
         </div>
-
 
 
         <div>
