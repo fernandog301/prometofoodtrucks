@@ -1,32 +1,28 @@
 "use client";
 
-import { getAllFoodTrucks, updateFoodtruck } from "@/app/utils/DataServices";
-import { IFoodTruck, IToken, IUpdateFoodTruck } from "@/interfaces/interfaces";
-import {
-  AddressAutofill,
-  AddressMinimap,
-  useConfirmAddress,
-  config,
-} from "@mapbox/search-js-react";
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import { get } from "http";
-import Link from "next/link";
-import React, { useCallback, useEffect, useState } from "react";
+import { Button } from "flowbite-react";
+import React, { useContext } from "react";
+import { signUpContext } from '@/context/Context';
 
 function FormComponent() {
 
-  const [address, setAddress] = useState<string>('');
-  const [city, setCity] = useState<string>('');
-  const [state, setState] = useState<string>('');
-  const [zipCode,setZipCode] = useState<string>('');
-  const [name, setName] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [schedule, setSchedule] = useState<string>('');
-  const [category, setCategory] = useState<string>('');
-  const [image, setImage] = useState<string>('');
+  const { address, setAddress, city, setCity, state, setState, zipCode, setZipCode, name, setName, description, setDescription, schedule, setSchedule, category, setCategory, image, setImage, latitude, setLatitude, setLongitude } = useContext(signUpContext)
+
+  // const [address, setAddress] = useState<string>('');
+  // const [city, setCity] = useState<string>('');
+  // const [state, setState] = useState<string>('');
+  // const [zipCode,setZipCode] = useState<string>('');
+  // const [name, setName] = useState<string>('');
+  // const [description, setDescription] = useState<string>('');
+  // const [schedule, setSchedule] = useState<string>('');
+  // const [category, setCategory] = useState<string>('');
+  // const [image, setImage] = useState<string>('');
+
+
   // const [itemId, setItemId] = useState<string>('');
   // const [itemName, setItemName] = useState<string>('');
   // const [itemPrice, setItemPrice] = useState<string>('');
+
   
   const handleSubmit = async () => {
     let inputData = {
@@ -123,6 +119,7 @@ function FormComponent() {
   //   })
   // }
 
+
   return (
     <div>
       <h1>Contact form</h1>
@@ -135,55 +132,60 @@ function FormComponent() {
             <input type="address" name="address" onChange={(e) => setAddress(e.target.value)} />
           </div>
 
+      <div></div>
+        <div>
+          <label>address</label>
+          <input onChange={(e) => setAddress(e.target.value)} />
+        </div>
 
-          <div>
-            <label>city</label>
-            <input type="city" name="city" onChange={handleInput} value={formData.city} />
-          </div>
-          
-          <div>
-            <label>state</label>
-            <input type="state" name="state" onChange={handleInput} value={formData.state} />
-          </div>
 
-          <div>
-            <label>zipCode</label>
-            <input type="zipCode" name="zipCode" onChange={handleInput} value={formData.zipCode} />
-          </div>
-          <div>
-            <label>name</label>
-            <input type="name" name="name" onChange={handleInput} value={formData.name} />
-          </div>
 
-          <div>
-            <label>description</label>
-            <textarea name="description" onChange={handleInput} value={formData.description}></textarea>
-          </div>
+        <div>
+          <label>city</label>
+          <input onChange={(e) => setCity(e.target.value)} />
+        </div>
 
-          <div>
-            <label>schedule</label>
-            <textarea name="schedule" onChange={handleInput} value={formData.schedule}></textarea>
-          </div>
-          <div>
-            <label>latitude</label>
-            <textarea name="latitude" onChange={handleInput} value={formData.latitude}></textarea>
-          </div>
-          <div>
-            <label>longitude</label>
-            <textarea name="longitude" onChange={handleInput} value={formData.longitude}></textarea>
-          </div>
-          <div>
-            <label>image</label>
-            <textarea name="image" onChange={handleInput} value={formData.image}></textarea>
-          </div>
-          <div>
-            <label>category</label>
-            <textarea name="category" onChange={handleInput} value={formData.category}></textarea>
-          </div>
+        <div>
+          <label>state</label>
+          <input onChange={(e) => setState(e.target.value)} />
+        </div>
 
-          <Button type="submit">Send message</Button>
-        </form>
-      }
+        <div>
+          <label>zipCode</label>
+          <input onChange={(e) => setZipCode(parseInt(e.target.value))} />
+        </div>
+        <div>
+          <label>name</label>
+          <input onChange={(e) => setName(e.target.value)} />
+        </div>
+
+        <div>
+          <label>description</label>
+          <textarea onChange={(e) => setDescription(e.target.value)}></textarea>
+        </div>
+
+        <div>
+          <label>schedule</label>
+          <textarea onChange={(e) => setSchedule(e.target.value)}></textarea>
+        </div>
+        <div>
+          <label>latitude</label>
+          <textarea onChange={(e) => setLatitude(parseInt(e.target.value))}></textarea>
+        </div>
+        <div>
+          <label>longitude</label>
+          <textarea onChange={(e) => setLongitude(parseInt(e.target.value))}></textarea>
+        </div>
+        <div>
+          <label>image</label>
+          <textarea onChange={(e) => setImage(e.target.value)}></textarea>
+        </div>
+        <div>
+          <label>category</label>
+          <textarea onChange={(e) => setCategory(e.target.value)}></textarea>
+        </div>
+
+        <Button type="submit">Send message</Button>
     </div>
   )
 };

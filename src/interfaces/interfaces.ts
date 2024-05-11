@@ -2,7 +2,7 @@ export interface ITruckPage {
     userID: number
     truckName: string
     date: string
-    description: string
+    descripCion: string
     image: string
     categories: string
     isPublished: boolean
@@ -21,7 +21,7 @@ export interface IUpdateFoodTruck{
     name: string,
     image: string,
     schedule: string,
-    description: string,
+    descripCion: string,
     category: string,
 }
 
@@ -36,7 +36,7 @@ export interface IFoodTruck{
     name: string,
     image: string,
     schedule: string,
-    description: string,
+    descripCion: string,
     category: string,
     rating: string,
     isDeleted: boolean,
@@ -52,7 +52,7 @@ export interface IFoodTruck{
 export interface IUserInfo {
     username: string
     password: string
-    foodTruckName: string
+    name: string
 }
 export interface IUserLogin {
     username: string
@@ -61,13 +61,13 @@ export interface IUserLogin {
 
 export interface IUserData {
     userId: number
-    foodTruckName: string
+    name: string
 }
 
 export interface IUserSignUp {
     username: string
     password: string
-    foodTruckName: string
+    name: string
     menuItems: {
         itemName: string[]
         itemPrice: number[]
@@ -81,10 +81,12 @@ export interface IUserSignUpContext {
     setPassword: (password: string) => void
     email: string
     setEmail: (email: string) => void
-    foodTruckName: string
-    setFoodTruckName: (foodTruckName: string) => void
+    name: string
+    setName: (name: string) => void
     description: string
     setDescription: (description: string) => void
+    category: string
+    setCategory: (category: string) => void
     items: string[]
     setItems: (items: string[]) => void
     itemPrices: number[]
@@ -99,6 +101,11 @@ export interface IUserSignUpContext {
     setCity: (city: string) => void
     state: string
     setState: (state: string) => void
-    zipcode: number
-    setZipcode: (zipcode: number) => void
+    zipCode: number
+    setZipCode: (zipCode: number) => void
+    schedule: string
+    setSchedule: (schedule: string) => void
+    image: string
+    setImage: (image: string) => void
+    
 }
