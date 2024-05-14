@@ -18,8 +18,8 @@ const AddTruckComponent = () => {
         <p>Schedule</p>
         <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter your truck's schedule" type="text" onChange={(e) => setSchedule(e.target.value)} />
         <p>Food Category</p>
-        <select className=' rounded-lg text-xs w-full my-2' id="category" onChange={(e => setCategory(e.target.value))} required>
-          <option value="" disabled selected>Select a category</option>
+        <select defaultValue={""} className=' rounded-lg text-xs w-full my-2' id="category" onChange={(e => setCategory(e.target.value))} required>
+          <option value="" disabled>Select a category</option>
           <option value="African">African</option>
           <option value="Algerian">Algerian</option>
           <option value="American">American</option>
