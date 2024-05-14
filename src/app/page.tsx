@@ -24,7 +24,6 @@ export default function Home() {
   return (
     <div>
     <HomeComponent />
-    <AddMenuItemsComponent />
     </div>
   );
 }
