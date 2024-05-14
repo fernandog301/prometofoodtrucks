@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { signUpContext } from '@/context/Context';
 import { Select } from "flowbite-react";
 
 const AddTruckComponent = () => {
-  const { name, setName, description, setDescription, schedule, setSchedule } = useContext(signUpContext);
-
+  const { name, setName, description, setDescription, schedule, setSchedule, category, setCategory } = useContext(signUpContext);
 
   return (
     <div>
@@ -19,7 +18,7 @@ const AddTruckComponent = () => {
         <p>Schedule</p>
         <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter your truck's schedule" type="text" onChange={(e) => setSchedule(e.target.value)} />
         <p>Food Category</p>
-        <select className=' rounded-lg text-xs w-full my-2' id="category" required>
+        <select className=' rounded-lg text-xs w-full my-2' id="category" onChange={(e => setCategory(e.target.value))} required>
           <option value="" disabled selected>Select a category</option>
           <option value="African">African</option>
           <option value="Algerian">Algerian</option>

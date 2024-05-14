@@ -51,7 +51,8 @@ const AddMenuItemsComponent = () => {
                             <input className="rounded-lg text-xs w-10/12 my-2" placeholder={`Menu Item ${index + 1}`} type="text" value={item} onChange={(e) => handleInputChange(index, e)} />
                             <div className='flex h-customButton rounded-lg my-2 items-center px-2 w-2/12'>
                                 <Image src={'/currency-dollar.svg'} alt='' width={12} height={12} className=' h-3'/>
-                                <input onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} className="text-xs w-full outline-none rounded-lg pl-0 focus:ring-transparent focus:border-transparent border-transparent h-full noArrow" type="number" placeholder='' value={itemPrices[index] || ''} onChange={(e) => handlePriceChange(index, e)} />
+                                <input pattern="^\d*(\.\d{0,2})?$" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} className="text-xs w-full outline-none rounded-lg pl-0 focus:ring-transparent focus:border-transparent border-transparent h-full noArrow" type="number" placeholder='' value={itemPrices[index] || ''} onChange={(e) => {const validated = e.target.value.match(/^(\d*\.{0,1}\d{0,2}$)/)
+                                if(validated){handlePriceChange(index, e)}} } />
                             </div>
                             
                             <button className="rounded-lg text-xs w-auto my-2" onClick={() => handleRemoveItem(index)}>
