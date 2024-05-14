@@ -6,7 +6,6 @@ import { Button } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import HomeComponent from "./Home/page";
-import AddMenuItemsComponent from "@/Components/CreateAccount/AddMenuItemsComponent";
 
 export default function Home() {
   const [username, setUsername] = useState<string>('');
