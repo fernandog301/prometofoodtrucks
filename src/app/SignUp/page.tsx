@@ -12,7 +12,7 @@ const SignUpComponent = () => {
   const [i, setI] = useState(0);
   
   let router = useRouter();
-  const components = [<AddLoginInfoComponent/> ,<AddTruckComponent/> ,<AddMenuItemsComponent/>]
+  const components = [<AddLoginInfoComponent key="loginInfo"/> ,<AddTruckComponent key="truck"/> ,<AddMenuItemsComponent key="menuItems"/>]
   const isCompleted = i === components.length - 1
   const isStarting = i === 0
   
@@ -40,6 +40,7 @@ const SignUpComponent = () => {
           </div>
           <div>
             {components[i]}
+            
           </div>
           <div className='flex gap-4'>
             <Button className="w-full bg-btn font-light my-4" onClick={handleBack}>{isStarting ? "Home" : "Back"}</Button>
