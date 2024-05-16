@@ -28,6 +28,7 @@ function FormComponent() {
       <h1>Contact form</h1>
       <div></div>
         <div>
+          
           <label>address</label>
           <input onChange={(e) => setAddress(e.target.value)} />
         </div>

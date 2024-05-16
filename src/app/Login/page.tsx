@@ -2,7 +2,7 @@
 
 import { Button, Card } from 'flowbite-react'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createAccount, getLoggedInUserData, login } from '../utils/DataServices'
 import { IToken } from '../../interfaces/interfaces'
 
@@ -20,10 +20,12 @@ const LogInComponent = () => {
       }
 
       let token: IToken = await login(userData);
+      // userData = JSON.parse(sessionStorage.userData);
 
       console.log(token);
       
       if(token.token != null) {
+
         localStorage.setItem("Token", token.token)
         getLoggedInUserData(username);
         router.push('/FoodTruck');
@@ -36,6 +38,15 @@ const LogInComponent = () => {
         router.push('/ResetPassword')
     }
 
+    useEffect(() => {
+      // Check session storage for existing user data
+      const savedUserData = sessionStorage.getItem("userData");
+      if (savedUserData) {
+          const userData = JSON.parse(savedUserData);
+          setUsername(userData.username);
+          setPassword(userData.password);
+      }
+  }, []); // Run once on component mount
 
     return (
         <div className='flex justify-center items-center h-full'>

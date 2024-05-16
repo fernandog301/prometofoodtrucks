@@ -70,10 +70,10 @@ const HomeComponent = () => {
                             <button>Mexican</button>
                             <button>Indian</button>
                             <button>Seafood</button>
-                            <button>Seafood</button>
-                            <button></button>
-                            <button></button>
-                            <button></button>
+                            <button>Desserts</button>
+                            <button>American</button>
+                            <button>Thai</button>
+                            <button>Pizza</button>
                         </div>
                     </Dropdown>
                 </div>

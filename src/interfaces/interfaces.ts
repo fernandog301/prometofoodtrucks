@@ -25,8 +25,10 @@ export interface IUpdateFoodTruck{
     category: string,
 }
 
-export interface IFoodTruck{
+export interface IFoodTruckProperties{
     id: number,
+    userId: number,
+    
     address: string,
     city : string,
     state: string,
@@ -36,15 +38,50 @@ export interface IFoodTruck{
     name: string,
     image: string,
     schedule: string,
-    descripCion: string,
+    description: string,
     category: string,
     rating: string,
     isDeleted: boolean,
     menuItems: [
     {
-      itemId: number[],
-      itemName: string[]
-      itemPrice: string[]
+        foodTruckId : number[],
+        itemId: number[],
+        itemName: string[]
+        itemPrice: string[]
+    }
+  ]
+}
+
+export interface IFoodTruck{
+    id: number,
+    userId: number,
+    user: [
+        {
+            userID: number,
+            username: string,
+            salt: string,
+            hash: string
+        }
+    ]
+    address: string,
+    city : string,
+    state: string,
+    zipCode: string,
+    latitude: number,
+    longitude: number,
+    name: string,
+    image: string,
+    schedule: string,
+    description: string,
+    category: string,
+    rating: string,
+    isDeleted: boolean,
+    menuItems: [
+    {
+        foodTruckId : number[],
+        itemId: number[],
+        itemName: string[]
+        itemPrice: string[]
     }
   ]
 }

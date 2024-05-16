@@ -1,8 +1,11 @@
-import { IFoodTruck, IToken, IUpdateFoodTruck, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
+import { IFoodTruck, IFoodTruckProperties, IToken, IUpdateFoodTruck, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
 
 const url = 'https://prometowebapi.azurewebsites.net/';
 
 let userData: IUserData;
+// let userData = [];
+
+
 
 export const createAccount = async (createdUser: IUserInfo) => {
     const response = await fetch(url + 'User/AddUser', {
@@ -20,7 +23,7 @@ export const createAccount = async (createdUser: IUserInfo) => {
 
     const data = await response.json();
     console.log(data);
-
+    return data
 }
 
 export const login = async (Loginuser: IUserLogin) => {
@@ -56,7 +59,8 @@ export const checkToken = () => {
 export const getLoggedInUserData = async (username: string) => {
     const res = await fetch(url + "User/GetUserByUsername/" + username);
     const data = await res.json();
-    userData = data;
+    // userData = data;
+    return data;
 }
 
 export const loggedinData = () => {
@@ -75,8 +79,23 @@ export const getMapDots = async () => {
 //     const res = await fetch(url + '')
 // }
 
-export const updateFoodtruck = async (updateFoodtruck: IUpdateFoodTruck) => {
-    const res = await fetch(url + 'FoodTruck/UpdateFoodTruck', {
+// FoodTruck Starting point
+
+export const getAllFoodTrucks = async (FoodTruck : IFoodTruck) => {
+    const res = await fetch(url + 'FoodTruck/GetAllFoodTruckItems/' + FoodTruck);
+    const data = await res.json();
+    return data;
+}
+
+export const getAllFoodTruckItems = async (FoodTruck : IFoodTruck) => {
+    const res = await fetch(url + 'FoodTruck/GetAllFoodTrucks/' + FoodTruck);
+    const data = await res.json();
+    return data;
+}
+
+
+export const updateFoodTruck = async (updateFoodtruck: IFoodTruck) => {
+    const res = await fetch(url + 'FoodTruck/UpdateFoodTruckForUser', {
         method: 'PUT',
         headers:{
             'Content-Type':'application/json'
@@ -98,7 +117,7 @@ export const updateFoodtruck = async (updateFoodtruck: IUpdateFoodTruck) => {
 
 
 export const AddFoodTruck = async (AddFoodTruck: IFoodTruck) => {
-    const response = await fetch(url + 'FoodTruck/AddFoodTruck', {
+    const response = await fetch(url + 'FoodTruck/AddFoodTruckItems', {
     method: 'POST',
         headers: {
             'Content-Type':'application/json'
@@ -111,11 +130,71 @@ export const AddFoodTruck = async (AddFoodTruck: IFoodTruck) => {
         }
         const data = await response.json();
         console.log(data);
+        return data;
 }
 
-export const getAllFoodTrucks = async (UpdateFoodTruck : IFoodTruck) => {
-    const res = await fetch(url + 'FoodTruck/GetAllFoodTrucks/' + UpdateFoodTruck);
-    const data = await res.json();
+
+
+
+
+
+
+
+// foodTruck ending endpoints
+
+
+// Menu Starts
+
+export const updateMenuItem = async (updateMenuItem: IFoodTruck) => {
+    const res = await fetch(url + 'FoodTruck/UpdateMenuItem', {
+        method: 'PUT',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(updateMenuItem)
+    });
+
+    if(!res.ok){
+        const message = "An error has occured " + res.status;
+        throw new Error(message);
+    }
+    
+    const data: IToken = await res.json();
     return data;
 }
 
+export const AddMenuItem = async (AddMenuItem: IFoodTruck) => {
+    const response = await fetch(url + 'FoodTruck/AddMenuForFoodTruck', {
+    method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(AddMenuItem)
+        });
+        if(!response.ok) {
+            const message = "An error has occured " + response.status;
+            throw new Error(message);
+        }
+        const data = await response.json();
+        console.log(data);
+        return data;
+}
+
+export const DeleteMenuItem = async (DeleteMenuItem: IFoodTruck) => {
+    const response = await fetch(url + 'FoodTruck/DeleteMenuItem', {
+    method: 'DELETE',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(DeleteMenuItem)
+        });
+        if(!response.ok) {
+            const message = "An error has occured " + response.status;
+            throw new Error(message);
+        }
+        const data = await response.json();
+        console.log(data);
+        return data;
+}
+
+// Menu End 
