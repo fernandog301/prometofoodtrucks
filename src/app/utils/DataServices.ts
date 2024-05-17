@@ -118,4 +118,3 @@ export const getAllFoodTrucks = async (UpdateFoodTruck : IFoodTruck) => {
     const data = await res.json();
     return data;
 }
-

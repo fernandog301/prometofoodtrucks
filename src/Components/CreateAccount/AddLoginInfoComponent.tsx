@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { signUpContext } from '@/context/Context';
+import { signUpContext, useSignUpContext } from '@/context/Context';
 
 const AddLoginInfoComponent = () => {
-    const { username, setUsername, email, setEmail, password, setPassword } = useContext(signUpContext);
+    const { username, setUsername, email, setEmail, password, setPassword } = useSignUpContext();
 
     return (
         <div>

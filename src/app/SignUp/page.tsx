@@ -7,12 +7,13 @@ import { createAccount } from '../utils/DataServices';
 import AddMenuItemsComponent from '@/Components/CreateAccount/AddMenuItemsComponent';
 import AddTruckComponent from '@/Components/CreateAccount/AddTruckComponent';
 import AddLoginInfoComponent from '@/Components/CreateAccount/AddLoginInfoComponent';
+import AddAvatarComponent from '@/Components/CreateAccount/AddAvatarComponent';
 
 const SignUpComponent = () => {
   const [i, setI] = useState(0);
   
   let router = useRouter();
-  const components = [<AddLoginInfoComponent key="loginInfo"/> ,<AddTruckComponent key="truck"/> ,<AddMenuItemsComponent key="menuItems"/>]
+  const components = [<AddLoginInfoComponent key="loginInfo"/> ,<AddTruckComponent key="truck"/> ,<AddMenuItemsComponent key="menuItems"/> ,<AddAvatarComponent key="avatar" />]
   const isCompleted = i === components.length - 1
   const isStarting = i === 0
   

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { signUpContext } from '@/context/Context';
+import { signUpContext, useSignUpContext } from '@/context/Context';
 import { Select } from "flowbite-react";
 
 const AddTruckComponent = () => {
-  const { name, setName, description, setDescription, schedule, setSchedule, category, setCategory } = useContext(signUpContext);
+  const { name, setName, description, setDescription, schedule, setSchedule, category, setCategory } = useSignUpContext();
 
   return (
     <div>
