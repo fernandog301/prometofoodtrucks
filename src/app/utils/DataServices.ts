@@ -73,7 +73,17 @@ export const getMapDots = async () => {
     return data;
 }
 
+export const setUserDataInSessionStorage = (userData: IUserData) => {
+    const jsonData = JSON.stringify(userData);
+    sessionStorage.setItem("userData", jsonData);
+    
+};
 
+// Function to get user data from session storage
+export const getUserDataFromSessionStorage = () => {
+    const savedUserData = sessionStorage.getItem("userData");
+    return savedUserData ? JSON.parse(savedUserData) : null;
+};
 
 // export const getAllFoodTrucks = async () => {
 //     const res = await fetch(url + '')

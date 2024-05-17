@@ -9,9 +9,12 @@ import {
   getAllFoodTruckItems,
   getAllFoodTrucks,
   getLoggedInUserData,
+  getUserDataFromSessionStorage,
   loggedinData,
+  setUserDataInSessionStorage,
 } from "../utils/DataServices";
 import { IFoodTruck, IFoodTruckProperties } from "@/interfaces/interfaces";
+
 
 const FoodTruckComponent = () => {
   const router = useRouter();
@@ -24,10 +27,8 @@ const FoodTruckComponent = () => {
     router.push("/Form");
   };
 
-  const [FoodTruckItems, setFoodTruckItems] = useState<IFoodTruckProperties[]>(
-    []
-  );
-  const [UserData, setUserData] = useState<any>("");
+  const [FoodTruckItems, setFoodTruckItems] = useState<IFoodTruckProperties[]>([]);
+  //   const [UserData, setUserData] = useState<any>("");
   const [username, setUsername] = useState<string>("");
 
   // useEffect(() => {
@@ -39,42 +40,39 @@ const FoodTruckComponent = () => {
   //     fetchUserData();
 
   // },[])
-//   FoodTruckItems.
+  //   FoodTruckItems.
 
   useEffect(() => {
 
-
+    const savedUserData = getUserDataFromSessionStorage();
+    if (savedUserData) {
+        setUsername(savedUserData.username);
+        const fetchUserData = async () => {
+          const res = await getLoggedInUserData(username);
+          console.log(res)
+          const userData = await res.json();
+          setUsername(userData.username);
+          console.log(userData);
+          setUserDataInSessionStorage(userData);
     
-    const fetchUserData = async () => {
-      const res = await getLoggedInUserData("123");
-      
-        // const data = await res.json();
-        console.log(res);
-        setUserData(res);
-    
-    };
-    fetchUserData();
-
+      fetchUserData();
+    }
+  }
 
     const fetchData = async () => {
-      const foodTruckId = UserData.userId; // Assuming userId is in UserData
+        // Get userId from user data
+        const userData = getUserDataFromSessionStorage();
+      const foodTruckId = userData ? userData.userId : null;
       if (foodTruckId) {
         const response = await getAllFoodTruckItems(foodTruckId);
         const result = await response.json();
-        console.log(result)
-        
+        console.log(result);
+
         setFoodTruckItems(result);
-        
-
-        // let FoodTruckItems = result.
-
       }
     };
     fetchData();
-    
-
   }, []);
-
 
   return (
     <div className="flex justify-center items-center">
@@ -90,13 +88,7 @@ const FoodTruckComponent = () => {
             />
           </div>
           <div>
-            {FoodTruckItems.map((item, idx) => {
-              return (
-                <div key={idx}>
-                  <h1 className="text-2xl">{item.name}</h1>
-                </div>
-              );
-            })}
+          <h1>Welcome, {FoodTruckItems.map(item => item.name)}</h1>
           </div>
           <Button
             className="logout-button text-black rounded-xl"
@@ -106,18 +98,25 @@ const FoodTruckComponent = () => {
           </Button>
         </div>
         <div>
+        
           <div className="border border-black bg-white rounded-xl mt-8 p-2 h-44 flex flex-col gap-2">
             <div className=" border-b-black border-b">
+              {/* {FoodTruckItems.map((item, description ) => ( */}
               <div>
+                
                 <h1>Description</h1>
+  
               </div>
+               {/* )
+              )
+            } */}
             </div>
             <div>
               <div>
-                {FoodTruckItems.map((item, description) => {
+                {FoodTruckItems.map((item) => {
                   return (
-                    <div key={item.description}>
-                      <p>Description</p>
+                    <div >
+                      <p>{item.description}</p>
                     </div>
                   );
                 })}
@@ -237,7 +236,9 @@ const FoodTruckComponent = () => {
               </div>
             </div>
           </div>
+          
         </div>
+        
       </div>
     </div>
   );
