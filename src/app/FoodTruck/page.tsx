@@ -30,48 +30,47 @@ const FoodTruckComponent = () => {
   const [FoodTruckItems, setFoodTruckItems] = useState<IFoodTruckProperties[]>([]);
   //   const [UserData, setUserData] = useState<any>("");
   const [username, setUsername] = useState<string>("");
+  const [stringArray, setStringArray] = useState('')
 
-  // useEffect(() => {
-
-  //     const fetchUserData = async () => {
-  //         const res = await getLoggedInUserData()
-  //         setUserData(res)
-  //     }
-  //     fetchUserData();
-
-  // },[])
-  //   FoodTruckItems.
 
   useEffect(() => {
-
-    const savedUserData = getUserDataFromSessionStorage();
-    if (savedUserData) {
-        setUsername(savedUserData.username);
-        const fetchUserData = async () => {
-          const res = await getLoggedInUserData(username);
-          console.log(res)
-          const userData = await res.json();
-          setUsername(userData.username);
-          console.log(userData);
-          setUserDataInSessionStorage(userData);
-    
-      fetchUserData();
-    }
-  }
-
+    const result = stringArray.join(" ");
     const fetchData = async () => {
-        // Get userId from user data
-        const userData = getUserDataFromSessionStorage();
-      const foodTruckId = userData ? userData.userId : null;
-      if (foodTruckId) {
-        const response = await getAllFoodTruckItems(foodTruckId);
+    const response = await getAllFoodTrucks();
         const result = await response.json();
         console.log(result);
 
         setFoodTruckItems(result);
-      }
-    };
-    fetchData();
+    }
+    fetchData()
+  //   const savedUserData = getUserDataFromSessionStorage();
+  //   if (savedUserData) {
+  //       setUsername(savedUserData.username);
+  //       const fetchUserData = async () => {
+  //         const res = await getLoggedInUserData(username);
+  //         console.log(res)
+  //         const userData = await res.json();
+  //         setUsername(userData.username);
+  //         console.log(userData);
+  //         setUserDataInSessionStorage(userData);
+    
+  //     fetchUserData();
+  //   }
+  // }
+
+    // const fetchData = async () => {
+    //     // Get userId from user data
+    //     const userData = getUserDataFromSessionStorage();
+    //   const foodTruckId = userData ? userData.userId : null;
+    //   if (foodTruckId) {
+    //     const response = await getAllFoodTrucks(foodTruckId);
+    //     const result = await response.json();
+    //     console.log(result);
+
+    //     setFoodTruckItems(result);
+    //   }
+    // };
+    // fetchData();
   }, []);
 
   return (

@@ -53,16 +53,8 @@ export interface IFoodTruckProperties{
 }
 
 export interface IFoodTruck{
-    id: number,
     userId: number,
-    user: [
-        {
-            userID: number,
-            username: string,
-            salt: string,
-            hash: string
-        }
-    ]
+    username: string,
     address: string,
     city : string,
     state: string,
@@ -76,14 +68,9 @@ export interface IFoodTruck{
     category: string,
     rating: string,
     isDeleted: boolean,
-    menuItems: [
-    {
-        foodTruckId : number[],
-        itemId: number[],
-        itemName: string[]
-        itemPrice: string[]
-    }
-  ]
+    itemName: string,
+    itemPrice: string
+    
 }
 
 export interface IUserInfo {

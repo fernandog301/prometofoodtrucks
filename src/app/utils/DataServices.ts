@@ -92,7 +92,7 @@ export const getUserDataFromSessionStorage = () => {
 // FoodTruck Starting point
 
 export const getAllFoodTrucks = async (FoodTruck : IFoodTruck) => {
-    const res = await fetch(url + 'FoodTruck/GetAllFoodTruckItems/' + FoodTruck);
+    const res = await fetch(url + 'User/GetAllFoodTrucks/' + FoodTruck);
     const data = await res.json();
     return data;
 }

@@ -16,9 +16,8 @@ const MapComponent = () => {
   const [longitude, setLongitude] = useState(null);
   const [latitude, setLatitude] = useState(null);
   const [loadingMap, setLoadingMap] = useState(true);
-  // const [map, setMap] = useState<mapboxgl.Map | null>(null)
-  //   const geocoderContainerRef = useRef<HTMLDivElement>(null)
-    // const mapContainerRef = useRef<HTMLDivElement>(null)
+  const [stringArray, setStringArray] = useState('')
+
 
   const location = async () => {
     const promise = await fetch(`https://api.geoapify.com/v1/ipinfo?&apiKey=5affdbac674e47b0977a8f4bba6b9ea2`);
@@ -27,9 +26,9 @@ const MapComponent = () => {
     setLongitude(data.location.longitude);
     setLatitude(data.location.latitude);
   }
-  
+
   useEffect(() => {
-    
+
     const createMap = async () => {
       await location();
       mapboxgl.accessToken = await process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? '';
