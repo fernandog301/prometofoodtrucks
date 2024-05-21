@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import {
   AddressAutofill,
@@ -88,37 +87,36 @@ export default function AddLocationComponent() {
 
 
 
-  const handleSubmit = useCallback(
-    async (e: React.FormEvent) => {
-      e.preventDefault();
-      const result = await showConfirm();
-      if (result.type === "nochange") {
-        submitForm();
-      }
-    },
-    [showConfirm]
-  );
+  // const handleSubmit = useCallback(
+  //   async (e: React.FormEvent) => {
+  //     e.preventDefault();
+  //     const result = await showConfirm();
+  //     if (result.type === "nochange") {
+  //       submitForm();
+  //     }
+  //   },
+  //   [showConfirm]
+  // );
 
-  function submitForm() {
-    setTimeout(() => {
-      resetForm();
-    }, 2500);
-  }
+  // function submitForm() {
+  //   setTimeout(() => {
+  //     resetForm();
+  //   }, 2500);
+  // }
 
-  function resetForm() {
-    // console.log('Document:', document);
-    const inputs = document.querySelectorAll("input");
-    inputs.forEach((input: HTMLInputElement) => (input.value = ""));
-    setShowFormExpanded(false);
-    setFeature(null);
-  }
+  // function resetForm() {
+  //   // console.log('Document:', document);
+  //   const inputs = document.querySelectorAll("input");
+  //   inputs.forEach((input: HTMLInputElement) => (input.value = ""));
+  //   setShowFormExpanded(false);
+  //   setFeature(null);
+  // }
   //
   return (
     <div className="add-location-container">
       <form
         ref={formRef}
         className="flex flex-col px-6"
-        onSubmit={handleSubmit}
       >
         <div className="flex flex-col">
           <div className="my-3 col-span-2">

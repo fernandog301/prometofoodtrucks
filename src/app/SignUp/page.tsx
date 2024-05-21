@@ -10,6 +10,7 @@ import AddLoginInfoComponent from '@/Components/CreateAccount/AddLoginInfoCompon
 import AddAvatarComponent from '@/Components/CreateAccount/AddAvatarComponent';
 import { useSignUpContext } from '@/context/Context';
 import AddLocationComponent from '@/Components/CreateAccount/AddLocationComponent';
+import DynamicMapPageComponent from '@/Components/CreateAccount/DynamicMapComponent';
 
 const SignUpComponent = () => {
   const [i, setI] = useState(0);
@@ -18,14 +19,13 @@ const SignUpComponent = () => {
 
   const { username, setUsername, password, setPassword, email, setEmail, name, setName, description, setDescription, category, setCategory, rating, setRating, items, setItems, itemPrices, setItemPrices, longitude, setLongitude, latitude, setLatitude, address, setAddress, city, setCity, state, setState, zipCode, setZipCode, schedule, setSchedule, image, setImage } = useSignUpContext();
   let router = useRouter();
-  const components = [<AddLoginInfoComponent key="loginInfo" />, <AddTruckComponent key="truck" />, <AddMenuItemsComponent key="menuItems" />, <AddAvatarComponent key="avatar" />, <AddLocationComponent key="location" />]
+  const components = [<AddLoginInfoComponent key="loginInfo" />, <AddTruckComponent key="truck" />, <AddMenuItemsComponent key="menuItems" />, <AddAvatarComponent key="avatar" />, <DynamicMapPageComponent key="location" />]
   const isCompleted = i === components.length - 1
   const isStarting = i === 0
 
   useEffect(() => {
     setItemName(items.join(" "))
     setItemPrice(itemPrices.join(" "))
-    console.log(itemPrice)
   },[username, items, itemPrices])
 
 
