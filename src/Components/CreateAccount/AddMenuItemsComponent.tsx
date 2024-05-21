@@ -1,15 +1,11 @@
 "use client"
 
-import { Button } from 'flowbite-react';
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import Image from 'next/image'
-import { signUpContext, useSignUpContext } from '@/context/Context';
+import { useSignUpContext } from '@/context/Context';
 
 const AddMenuItemsComponent = () => {
     const { items, setItems, itemPrices, setItemPrices } = useSignUpContext();
-
-    // const [items, setItems] = useState<string[]>([]);
-    // const [itemPrices, setItemPrices] = useState<number[]>([])
 
     const handleAddItem = () => {
         setItems([...items, '']);
@@ -34,10 +30,6 @@ const AddMenuItemsComponent = () => {
         newPrices.splice(index, 1);
         setItems(newItems);
         setItemPrices(newPrices);
-    };
-
-    const handleNext = () => {
-        // Handle the next action
     };
 
     return (

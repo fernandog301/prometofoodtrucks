@@ -5,7 +5,6 @@ import {
   useConfirmAddress,
   config,
 } from "@mapbox/search-js-react";
-import { Button } from "@mui/material";
 import { useSignUpContext } from "@/context/Context";
 
 interface Feature {
@@ -85,33 +84,6 @@ export default function AddLocationComponent() {
     console.log(`Marker moved to latitude ${JSON.stringify(coordinate[1])}º.`);
   }
 
-
-
-  // const handleSubmit = useCallback(
-  //   async (e: React.FormEvent) => {
-  //     e.preventDefault();
-  //     const result = await showConfirm();
-  //     if (result.type === "nochange") {
-  //       submitForm();
-  //     }
-  //   },
-  //   [showConfirm]
-  // );
-
-  // function submitForm() {
-  //   setTimeout(() => {
-  //     resetForm();
-  //   }, 2500);
-  // }
-
-  // function resetForm() {
-  //   // console.log('Document:', document);
-  //   const inputs = document.querySelectorAll("input");
-  //   inputs.forEach((input: HTMLInputElement) => (input.value = ""));
-  //   setShowFormExpanded(false);
-  //   setFeature(null);
-  // }
-  //
   return (
     <div className="add-location-container">
       <form

@@ -25,29 +25,29 @@ export interface IUpdateFoodTruck{
     category: string,
 }
 
-export interface IFoodTruck{
-    id: number,
-    address: string,
-    city : string,
-    state: string,
-    zipCode: string,
-    latitude: number,
-    longitude: number,
-    name: string,
-    image: string,
-    schedule: string,
-    descripCion: string,
-    category: string,
-    rating: string,
-    isDeleted: boolean,
-    menuItems: [
-    {
-      itemId: number[],
-      itemName: string[]
-      itemPrice: string[]
-    }
-  ]
-}
+// export interface IFoodTruck{
+//     id: number,
+//     address: string,
+//     city : string,
+//     state: string,
+//     zipCode: string,
+//     latitude: number,
+//     longitude: number,
+//     name: string,
+//     image: string,
+//     schedule: string,
+//     descripCion: string,
+//     category: string,
+//     rating: string,
+//     isDeleted: boolean,
+//     menuItems: [
+//     {
+//       itemId: number[],
+//       itemName: string[]
+//       itemPrice: string[]
+//     }
+//   ]
+// }
 
 export interface IUserInfo {
     userName: string

@@ -92,7 +92,6 @@ const SignUpComponent = () => {
         </div>
         <div>
           {components[i]}
-          {/* <AddLocationComponent/> */}
 
         </div>
         <div className='flex gap-4'>
