@@ -64,7 +64,7 @@ export const loggedinData = () => {
 }
 
 export const getMapDots = async () => {
-    const res = await fetch(url + 'FoodTruck/GetAllFoodTrucksAsGeoJSON');
+    const res = await fetch(url + 'User/GetAllFoodTrucksAsGeoJSON');
     const data = await res.json();
     return data;
 }
