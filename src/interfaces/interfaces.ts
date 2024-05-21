@@ -50,9 +50,23 @@ export interface IFoodTruck{
 }
 
 export interface IUserInfo {
-    username: string
+    userName: string
     password: string
+    address: string
+    city: string
+    state: string
+    zipCode: string
+    latitude: number
+    longitude: number
     name: string
+    image: string
+    schedule: string
+    description: string
+    category: string
+    rating: string
+    isDeleted: boolean
+    itemName: string
+    itemPrice: string
 }
 export interface IUserLogin {
     username: string
@@ -87,6 +101,8 @@ export interface IUserSignUpContext {
     setDescription: (description: string) => void
     category: string
     setCategory: (category: string) => void
+    rating: string
+    setRating: (rating: string) => void
     items: string[]
     setItems: (items: string[]) => void
     itemPrices: number[]
@@ -101,8 +117,8 @@ export interface IUserSignUpContext {
     setCity: (city: string) => void
     state: string
     setState: (state: string) => void
-    zipCode: number
-    setZipCode: (zipCode: number) => void
+    zipCode: string
+    setZipCode: (zipCode: string) => void
     schedule: string
     setSchedule: (schedule: string) => void
     image: string

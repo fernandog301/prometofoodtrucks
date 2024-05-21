@@ -14,6 +14,7 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
     const [name, setName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [category, setCategory] = useState<string>("");
+    const [rating, setRating] = useState<string>("");
     const [items, setItems] = useState<string[]>([]);
     const [itemPrices, setItemPrices] = useState<number[]>([]);
     const [longitude, setLongitude] = useState<number>(0);
@@ -21,7 +22,7 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
     const [address, setAddress] = useState<string>("");
     const [city, setCity] = useState<string>("");
     const [state, setState] = useState<string>("");
-    const [zipCode, setZipCode] = useState<number>(0);
+    const [zipCode, setZipCode] = useState<string>("0");
     const [schedule, setSchedule] = useState<string>("");
     const [image, setImage] = useState<string>("");
 
@@ -40,6 +41,8 @@ export const SignUpProvider = ({ children }: { children: React.ReactNode }) => {
                 setDescription,
                 category,
                 setCategory,
+                rating,
+                setRating,
                 items,
                 setItems,
                 itemPrices,

@@ -45,7 +45,7 @@ function FormComponent() {
 
         <div>
           <label>zipCode</label>
-          <input onChange={(e) => setZipCode(parseInt(e.target.value))} />
+          <input onChange={(e) => setZipCode(e.target.value)} />
         </div>
         <div>
           <label>name</label>
