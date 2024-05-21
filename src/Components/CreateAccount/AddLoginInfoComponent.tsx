@@ -12,8 +12,6 @@ const AddLoginInfoComponent = () => {
             <div className="flex flex-col">
                 <p>Username</p>
                 <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a username" type="text" onChange={(e) => setUsername(e.target.value)} />
-                <p>Email</p>
-                <input className=" rounded-lg text-xs w-full my-2" placeholder="example@email.com" type="text" onChange={(e) => setEmail(e.target.value)} />
                 <p>Password</p>
                 <input className=" rounded-lg text-xs w-full my-2" placeholder="Enter a password" type="password" onChange={(e) => setPassword(e.target.value)} />
             </div>
