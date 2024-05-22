@@ -68,7 +68,7 @@ export const loggedinData = () => {
 }
 
 export const getMapDots = async () => {
-    const res = await fetch(url + 'FoodTruck/GetAllFoodTrucksAsGeoJSON');
+    const res = await fetch(url + 'User/GetAllFoodTrucksAsGeoJSON');
     const data = await res.json();
     return data;
 }
@@ -90,12 +90,16 @@ export const getUserDataFromSessionStorage = () => {
 // }
 
 // FoodTruck Starting point
-
-export const getAllFoodTrucks = async (FoodTruck : IFoodTruck) => {
-    const res = await fetch(url + 'User/GetAllFoodTrucks/' + FoodTruck);
+//  FoodTruck : IFoodTruck+ FoodTruck
+export const getAllFoodTrucks = async () => {
+    const res = await fetch(url + 'User/GetAllFoodTrucks/');
     const data = await res.json();
     return data;
 }
+
+
+
+
 
 export const getAllFoodTruckItems = async (FoodTruck : IFoodTruck) => {
     const res = await fetch(url + 'FoodTruck/GetAllFoodTrucks/' + FoodTruck);
