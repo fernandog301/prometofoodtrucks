@@ -43,6 +43,28 @@ body {
   background: #909090 !important;
   color: white !important;
 }
+
+/* styles/scrollbar.css */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #EFEFEFCC transparent;
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+.scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #EFEFEFCC;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
 img, video {
   max-width: none;
 }

@@ -10,6 +10,7 @@ import HomeComponent from "./Home/page";
 export default function Home() {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
     
   let router = useRouter();
 
@@ -21,6 +22,8 @@ export default function Home() {
 
 
   return (
+    <div>
     <HomeComponent />
+    </div>
   );
 }
