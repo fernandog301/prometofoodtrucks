@@ -128,6 +128,11 @@ export const updateFoodTruck = async (updateFoodtruck: IFoodTruck) => {
     return data;
 }
 
+export const getCategoryUser = async () => {
+    const res = await fetch(url + 'User/GetAllFoodTrucks/');
+    const data = await res.json();
+    return data;
+}
 
 
 
