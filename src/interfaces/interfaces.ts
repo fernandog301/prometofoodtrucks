@@ -25,7 +25,7 @@ export interface IUpdateFoodTruck{
     category: string,
 }
 
-<<<<<<< HEAD
+
 export interface IFoodTruckProperties{
     id: number,
     userId: number,
@@ -52,7 +52,7 @@ export interface IFoodTruckProperties{
     }
   ]
 }
-=======
+
 // export interface IFoodTruck{
 //     id: number,
 //     address: string,
@@ -76,7 +76,7 @@ export interface IFoodTruckProperties{
 //     }
 //   ]
 // }
->>>>>>> d21cefec531839f2f30984a6a0050096a2cf6634
+
 
 export interface IFoodTruck{
     userId: number,
