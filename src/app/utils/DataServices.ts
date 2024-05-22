@@ -69,7 +69,7 @@ export const loggedinData = () => {
 
 export const getMapDots = async () => {
     const res = await fetch(url + 'User/GetAllFoodTrucksAsGeoJSON');
-<<<<<<< HEAD
+
     const data = await res.json();
     return data;
 }
@@ -94,8 +94,7 @@ export const getUserDataFromSessionStorage = () => {
 //  FoodTruck : IFoodTruck+ FoodTruck
 export const getAllFoodTrucks = async () => {
     const res = await fetch(url + 'User/GetAllFoodTrucks/');
-=======
->>>>>>> d21cefec531839f2f30984a6a0050096a2cf6634
+
     const data = await res.json();
     return data;
 }
@@ -179,42 +178,3 @@ export const updateMenuItem = async (updateMenuItem: IFoodTruck) => {
     const data: IToken = await res.json();
     return data;
 }
-<<<<<<< HEAD
-
-export const AddMenuItem = async (AddMenuItem: IFoodTruck) => {
-    const response = await fetch(url + 'FoodTruck/AddMenuForFoodTruck', {
-    method: 'POST',
-        headers: {
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify(AddMenuItem)
-        });
-        if(!response.ok) {
-            const message = "An error has occured " + response.status;
-            throw new Error(message);
-        }
-        const data = await response.json();
-        console.log(data);
-        return data;
-}
-
-export const DeleteMenuItem = async (DeleteMenuItem: IFoodTruck) => {
-    const response = await fetch(url + 'FoodTruck/DeleteMenuItem', {
-    method: 'DELETE',
-        headers: {
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify(DeleteMenuItem)
-        });
-        if(!response.ok) {
-            const message = "An error has occured " + response.status;
-            throw new Error(message);
-        }
-        const data = await response.json();
-        console.log(data);
-        return data;
-}
-
-// Menu End 
-=======
->>>>>>> d21cefec531839f2f30984a6a0050096a2cf6634
