@@ -1,4 +1,4 @@
-import { IFoodTruck, IToken, IUpdateFoodTruck, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
+import { IToken, IUpdateFoodTruck, IUserData, IUserInfo, IUserLogin } from "../../interfaces/interfaces";
 
 const url = 'https://prometowebapi.azurewebsites.net/';
 
@@ -53,7 +53,7 @@ export const checkToken = () => {
     return result;
 }
 
-export const getLoggedInUserData = async (username: string) => {
+export const getFoodTruckByUsername = async (username: string) => {
     const res = await fetch(url + "User/GetUserByUsername/" + username);
     const data = await res.json();
     userData = data;
@@ -93,28 +93,13 @@ export const updateFoodtruck = async (updateFoodtruck: IUpdateFoodTruck) => {
     return data;
 }
 
-
-
-
-
-export const AddFoodTruck = async (AddFoodTruck: IFoodTruck) => {
-    const response = await fetch(url + 'FoodTruck/AddFoodTruck', {
-    method: 'POST',
-        headers: {
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify(AddFoodTruck)
-        });
-        if(!response.ok) {
-            const message = "An error has occured " + response.status;
-            throw new Error(message);
-        }
-        const data = await response.json();
-        console.log(data);
+export const getAllFoodTrucks = async () => {
+    const res = await fetch(url + 'User/GetAllFoodTrucks/');
+    const data = await res.json();
+    return data;
 }
-
-export const getAllFoodTrucks = async (UpdateFoodTruck : IFoodTruck) => {
-    const res = await fetch(url + 'FoodTruck/GetAllFoodTrucks/' + UpdateFoodTruck);
+export const getFoodtrucksByCategory = async (category: string) => {
+    const res = await fetch(`${url}User/GetCategoryUser/${category}`);
     const data = await res.json();
     return data;
 }

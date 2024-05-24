@@ -45,7 +45,7 @@ const MapComponent = () => {
         });
 
         newMap.on('style.load', () => {
-          newMap.setConfigProperty('basemap', 'lightPreset', 'day'); // the last value can be changed to dawn, day, dusk, or night
+          newMap.setConfigProperty('basemap', 'lightPreset', 'day');
         });
 
         const getData = async () => {
@@ -59,7 +59,6 @@ const MapComponent = () => {
           newMap.on('load', () => {
               newMap.addSource('FoodTruck', {
                   type: 'geojson',
-                  // Use a URL for the value for the data property.
                   data: mapDots,
               });
   

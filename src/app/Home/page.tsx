@@ -6,15 +6,16 @@ import React, { useEffect, useState } from 'react'
 import MapComponent from '@/Components/Map/MapComponent';
 import { IUserData } from '@/interfaces/interfaces';
 import Image from 'next/image'
+import { getAllFoodTrucks } from '../utils/DataServices';
 
 const HomeComponent = () => {
     const [currentRadius, setCurrentRadius] = useState('5 Miles');
     const [foodTrucks, setFoodTrucks] = useState<FoodTruck[]>([]);
+    const [cateogry, setCategory] = useState<string>("Categories");
 
     interface FoodTruck {
         Id: number;
         userName: string;
-        password: string;
         address: string;
         city: string;
         state: string;
@@ -30,6 +31,8 @@ const HomeComponent = () => {
         isDeleted: boolean;
         itemName: string;
         itemPrice: string;
+        salt: string
+        hash: string
     }
 
     const router = useRouter();
@@ -42,15 +45,43 @@ const HomeComponent = () => {
         router.push('/SignUp')
     }
 
+    function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+        const R = 6371;
+        const dLat = (lat2 - lat1) * (Math.PI / 180);
+        const dLon = (lon2 - lon1) * (Math.PI / 180);
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c;
+        return distance;
+    }
     useEffect(() => {
         const fetchFoodTrucks = async () => {
-            const res = await fetch('/data.json');
-            const data: FoodTruck[] = await res.json();
-            setFoodTrucks(data);
+            const myRes = await fetch('https://api.geoapify.com/v1/ipinfo?apiKey=5affdbac674e47b0977a8f4bba6b9ea2');
+            const myData = await myRes.json();
+            const myLatitude =  await myData.location.latitude;
+            const myLongitude = await myData.location.longitude;
+            const data:FoodTruck[] = await getAllFoodTrucks();
+            const sortedFoodTrucks = data.slice().sort((a, b) => {
+                const distanceA = calculateDistance(a.latitude, a.longitude, myLatitude, myLongitude);
+                const distanceB = calculateDistance(b.latitude, b.longitude, myLatitude, myLongitude);
+                return distanceA - distanceB;
+            });
+            setFoodTrucks(sortedFoodTrucks);
         };
 
         fetchFoodTrucks();
+
+        const test = async() => {
+            const promise:FoodTruck[] = await getAllFoodTrucks();
+            console.log(promise);
+        }
+        test();
+
     }, []);
+
 
     return (
         <div className='flex justify-center items-center h-full flex-col'>
@@ -75,7 +106,7 @@ const HomeComponent = () => {
                                     height={75}
                                     className="w-[100px] h-[100px] md:w-[75px] md:h-[75px] object-cover rounded-full"
                                 />
-                                    <p className='text-sm text-nowrap'>{truck.name}</p>
+                                <p className='text-sm text-nowrap'>{truck.name}</p>
                             </div>
                         ))}
                     </div>
@@ -87,21 +118,38 @@ const HomeComponent = () => {
                         <Dropdown className='home-button flex ml-12' label='Hours' inline>
                             <button className='home-button px-2 py-1'>Any</button>
                             <button className='home-button px-2 py-1'>Open Now</button>
-                            <button className='home-button px-2 py-1'>Custom</button>
+                            <button onClick={() => console.log(foodTrucks)} className='home-button px-2 py-1'>Custom</button>
                         </Dropdown>
                     </div>
                     <div className='home-button p-2 rounded-md'>
-                        <Dropdown className='home-button ml-16' label='Cuisines' inline>
-                            <div className='grid grid-cols-2 gap-x-6 px-3 py-2'>
-                                <button>Any</button>
-                                <button>Chinese</button>
-                                <button>Mexican</button>
-                                <button>Indian</button>
-                                <button>Seafood</button>
-                                <button>Seafood</button>
-                                <button></button>
-                                <button></button>
-                                <button></button>
+                        <Dropdown className='home-button ml-16' label={`${cateogry}`} inline >
+                            <div className='grid grid-cols-2 gap-x-4 gap-y-1 px-3 py-2'>
+                                <button onClick={() => setCategory("Catgories")}>Any</button>
+                                <button onClick={() => setCategory("African")}>African</button>
+                                <button onClick={() => setCategory("Algerian")}>Algerian</button>
+                                <button onClick={() => setCategory("American")}>American</button>
+                                <button onClick={() => setCategory("Arab")}>Arab</button>
+                                <button onClick={() => setCategory("Argentinian")}>Argentinian</button>
+                                <button onClick={() => setCategory("Asian")}>Asian</button>
+                                <button onClick={() => setCategory("Austrian")}>Austrian</button>
+                                <button onClick={() => setCategory("Belarusian")}>Belarusian</button>
+                                <button onClick={() => setCategory("Bermudian")}>Bermudian</button>
+                                <button onClick={() => setCategory("Caribbean")}>Caribbean</button>
+                                <button onClick={() => setCategory("Chinese")}>Chinese</button>
+                                <button onClick={() => setCategory("French")}>French</button>
+                                <button onClick={() => setCategory("Fusion")}>Fusion</button>
+                                <button onClick={() => setCategory("German")}>German</button>
+                                <button onClick={() => setCategory("Greek")}>Greek</button>
+                                <button onClick={() => setCategory("Indian")}>Indian</button>
+                                <button onClick={() => setCategory("Italian")}>Italian</button>
+                                <button onClick={() => setCategory("Japanese")}>Japanese</button>
+                                <button onClick={() => setCategory("Korean")}>Korean</button>
+                                <button onClick={() => setCategory("Mexican")}>Mexican</button>
+                                <button onClick={() => setCategory("Soul")}>Soul</button>
+                                <button onClick={() => setCategory("Spanish")}>Spanish</button>
+                                <button onClick={() => setCategory("Thai")}>Thai</button>
+                                <button onClick={() => setCategory("Vietnamese")}>Vietnamese</button>
+                                <button onClick={() => setCategory("Other")}>Other</button>
                             </div>
                         </Dropdown>
                     </div>

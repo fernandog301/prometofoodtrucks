@@ -15,8 +15,6 @@ export default function Home() {
   let router = useRouter();
 
   const handleSubmit = () => {
-    
-
     router.push('/Components/Pages/Login');
   }
 
