@@ -92,7 +92,7 @@ const SignUpComponent = () => {
         </div>
         <div>
           {components[i]}
-
+          {/* <AddLocationComponent /> */}
         </div>
         <div className='flex gap-4'>
           <Button className="w-full bg-btn font-light my-4" onClick={handleBack}>{isStarting ? "Home" : "Back"}</Button>

@@ -55,10 +55,16 @@ export default function AddLocationComponent() {
       setLatitude(latitude);
 
       // Extract and set address components
-      const address = res.features[0].place_name;
-      const city = res.features[0].context.find((c: any) => c.id.includes('place')).text;
-      const state = res.features[0].context.find((c: any) => c.id.includes('region')).text;
-      const zipCode = res.features[0].context.find((c: any) => c.id.includes('postcode')).text;
+      const address = res.features[0].place_name || "";
+      const cityContext = res.features[0].context?.find((c: any) =>
+        c.id.includes("place")
+      );
+      const stateContext = res.features[0].context?.find((c: any) =>
+        c.id.includes("region")
+      );
+      const zipCodeContext = res.features[0].context?.find((c: any) =>
+        c.id.includes("postcode")
+      );
 
       setAddress(address);
       setCity(city);
@@ -85,10 +91,10 @@ export default function AddLocationComponent() {
   }
 
   return (
-    <div className="add-location-container">
+    <div>
       <form
         ref={formRef}
-        className="flex flex-col px-6"
+        className="flex flex-col"
       >
         <div className="flex flex-col">
           <div className="my-3 col-span-2">
@@ -96,7 +102,7 @@ export default function AddLocationComponent() {
             <hr className="" />
           </div>
 
-          <div className="w-full">
+          <div className="flex flex-col">
             {/* Input form */}
             <p>
               Address
@@ -104,24 +110,24 @@ export default function AddLocationComponent() {
 
             {/* @ts-ignore */}
             <AddressAutofill accessToken={token} onRetrieve={handleRetrieve}>
-              <input className="rounded-lg text-xs w-full my-2" placeholder="Address"
+              <input className="rounded-lg text-xs w-full my-2 py-2 px-[0.75rem] border-[#6B7280] border-solid border-[1px] focus:outline-none" placeholder="Address"
                 autoComplete="address-line1"
                 id="mapbox-autofill"
               />
             </AddressAutofill>
-            <div className="">
+            <div className="flex flex-col">
               <p>
                 City
               </p>
-              <input className="rounded-lg text-xs w-full my-2" placeholder="City" autoComplete="address-level2" onChange={(e) => setCity(e.target.value)}/>
+              <input className="rounded-lg text-xs w-full my-2 py-2 px-[0.75rem] border-[#6B7280] border-solid border-[1px] focus:outline-none" placeholder="City" autoComplete="address-level2" onChange={(e) => setCity(e.target.value)}/>
               <p>
                 State / Region
               </p>
-              <input className="rounded-lg text-xs w-full my-2" placeholder="State / Region" autoComplete="address-level1" onChange={(e) => setState(e.target.value)} />
+              <input className="rounded-lg text-xs w-full my-2 py-2 px-[0.75rem] border-[#6B7280] border-solid border-[1px] focus:outline-none" placeholder="State" autoComplete="address-level1" onChange={(e) => setState(e.target.value)} />
               <p>
                 ZIP / Postcode
               </p>
-              <input className="rounded-lg text-xs w-full my-2" placeholder="ZIP / Postcode"
+              <input className="rounded-lg text-xs w-full my-2 py-2 px-[0.75rem] border-[#6B7280] border-solid border-[1px] focus:outline-none" placeholder="ZIP / Postcode"
                 autoComplete="postal-code" onChange={(e) => setZipCode(e.target.value)}
               />
             </div>
