@@ -98,14 +98,14 @@ const HomeComponent = () => {
                     </div>
                     <div className='flex flex-no-wrap overflow-x-auto scrollbar'>
                         {foodTrucks.map((truck) => (
-                            <div className='flex flex-col justify-center items-center m-2'>
-                                <Image
+                            <div key={truck.Id} className='flex flex-col justify-center items-center m-2'>
+                                {/* <Image
                                     src={`${truck.image}`}
                                     alt={truck.name}
                                     width={75}
                                     height={75}
                                     className="w-[100px] h-[100px] md:w-[75px] md:h-[75px] object-cover rounded-full"
-                                />
+                                /> */}
                                 <p className='text-sm text-nowrap'>{truck.name}</p>
                             </div>
                         ))}

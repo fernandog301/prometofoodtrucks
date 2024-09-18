@@ -127,7 +127,7 @@ const MapComponent = () => {
         const Address = e?.features?.[0]?.properties?.address;
         const City = e?.features?.[0]?.properties?.city;
         const State = e?.features?.[0]?.properties?.state;
-        const ZipCode = e?.features?.[0]?.properties?.zipCode;        
+        const ZipCode = e?.features?.[0]?.properties?.zipCode;
         const Name = e?.features?.[0]?.properties?.name;
         const Img = e?.features?.[0]?.properties?.image;
         const Schedule = e?.features?.[0]?.properties?.schedule;
@@ -138,7 +138,7 @@ const MapComponent = () => {
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
       }
-      const popupContent = `<div><strong>${Name}</strong><br><p>${Address} ${City}, ${State} ${ZipCode}</p><p>Img: ${Img}</p><p>Schedule: ${Schedule}</p><p>Description: ${Description}</p><p>Category: ${Category}</p><p>Hours of Operation: ${Rating}</p></div>`;
+      const popupContent = `<div className="overflow-hidden"><strong>${Name}</strong><br><p>${Address} ${City}, ${State} ${ZipCode}</p><p>Img: ${Img}</p><p>Schedule: ${Schedule}</p><p>Description: ${Description}</p><p>Category: ${Category}</p><p>Hours of Operation: ${Rating}</p></div>`;
 
       // Populate the popup and set its coordinates
       // based on the feature found.

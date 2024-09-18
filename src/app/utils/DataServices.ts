@@ -53,7 +53,7 @@ export const checkToken = () => {
     return result;
 }
 
-export const getFoodTruckByUsername = async (username: string) => {
+export const getLoggedInUserData = async (username: string) => {
     const res = await fetch(url + "User/GetUserByUsername/" + username);
     const data = await res.json();
     userData = data;
